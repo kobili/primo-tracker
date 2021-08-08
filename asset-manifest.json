@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/primo-tool/static/css/main.518ce94c.chunk.css",
+    "main.js": "/primo-tool/static/js/main.5d2c23db.chunk.js",
+    "main.js.map": "/primo-tool/static/js/main.5d2c23db.chunk.js.map",
+    "runtime-main.js": "/primo-tool/static/js/runtime-main.d7861629.js",
+    "runtime-main.js.map": "/primo-tool/static/js/runtime-main.d7861629.js.map",
+    "static/css/2.c490997a.chunk.css": "/primo-tool/static/css/2.c490997a.chunk.css",
+    "static/js/2.1cbc6bc9.chunk.js": "/primo-tool/static/js/2.1cbc6bc9.chunk.js",
+    "static/js/2.1cbc6bc9.chunk.js.map": "/primo-tool/static/js/2.1cbc6bc9.chunk.js.map",
+    "index.html": "/primo-tool/index.html",
+    "static/css/2.c490997a.chunk.css.map": "/primo-tool/static/css/2.c490997a.chunk.css.map",
+    "static/css/main.518ce94c.chunk.css.map": "/primo-tool/static/css/main.518ce94c.chunk.css.map",
+    "static/js/2.1cbc6bc9.chunk.js.LICENSE.txt": "/primo-tool/static/js/2.1cbc6bc9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d7861629.js",
+    "static/css/2.c490997a.chunk.css",
+    "static/js/2.1cbc6bc9.chunk.js",
+    "static/css/main.518ce94c.chunk.css",
+    "static/js/main.5d2c23db.chunk.js"
+  ]
+}
