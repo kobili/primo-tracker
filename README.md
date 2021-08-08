@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+# Genshin Impact Primogem Tool
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+A small app to help keep track of how many Wishes you can make with the amount of Primogems, Fates and previous pulls on a particular banner. Also tells you how many hard pities can be reached and how many primogems you will need for the next hard pity.
+
+A working build can be found at https://kobili.github.io/genshin-primo-helper/
 
 ## Available Scripts
 
