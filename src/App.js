@@ -14,6 +14,8 @@ function App() {
   const [fates, setFates] = useState(0);
   const [prevPulls, setPrevPulls] = useState(0);
   const [totalPulls, setTotalPulls] = useState(0);
+  const [numberOfHardPities, setNumberOfHardPities] = useState(0);
+  const [primosToNextHardPity, setPrimosToNextHardPity] = useState(14400);
 
   // newValue is a number
   const updatePrimos = (newValue) => {
@@ -33,7 +35,14 @@ function App() {
 
   const updateTotalPulls = (primos, fates, prevPulls) => {
     let pullsFromPrimos = primos / 160;
-    setTotalPulls(pullsFromPrimos + fates + prevPulls);
+    let updatedTotalPulls = pullsFromPrimos + fates + prevPulls
+    setTotalPulls(updatedTotalPulls);
+
+    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / 90);
+    setNumberOfHardPities(updatedNumberOfHardPities);
+
+    let primosToNextPity = Math.ceil((90 - (updatedTotalPulls % 90)) * 160);
+    setPrimosToNextHardPity(primosToNextPity);
   }
 
   return (
@@ -56,8 +65,9 @@ function App() {
           </Form>
           <div>Total Pulls on Banner: {Math.floor(totalPulls)}</div>
         </Col>
-        <Col lg={6}>
-          
+        <Col lg={6} className="align-content-center">
+          <div>You can hit hard pity {numberOfHardPities} {numberOfHardPities == 1 ? 'time' : 'times'}</div>
+          <div>You need {primosToNextHardPity} primos to reach your next hard pity</div>
         </Col>
 
       </Row>
