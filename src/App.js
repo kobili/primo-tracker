@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 function App() {
 
@@ -70,6 +71,14 @@ function App() {
             <Form.Group className="mb-3" controlId="primos-amt">
               <Form.Label>How many Primogems do you have?</Form.Label>
               <Form.Control type="number" min={0} onChange={(e) => updatePrimos(parseInt(e.target.value))} value={primos !== 0 ? primos : ""}></Form.Control>
+              <Row className="mt-1">
+                <Col lg={5}>
+                  <Button variant="primary" onClick={() => updatePrimos(primos + 60)}>Commissions (+60)</Button>
+                </Col>
+                <Col>
+                  <Button variant="primary" onClick={() => updatePrimos(primos + 90)}>Welkin (+90)</Button>
+                </Col>
+              </Row>
             </Form.Group>
             <Form.Group className="mb-3" controlId="fates-amt">
               <Form.Label>How many Fates do you have?</Form.Label>
@@ -86,7 +95,6 @@ function App() {
           <div>You can hit hard pity {numberOfHardPities} {numberOfHardPities === 1 ? 'time' : 'times'}</div>
           <div>You need {primosToNextHardPity} primos to reach your next hard pity</div>
         </Col>
-
       </Row>
     </Container>
     
