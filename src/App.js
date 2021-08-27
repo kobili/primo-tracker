@@ -73,10 +73,10 @@ function App() {
               <Form.Control type="number" min={0} onChange={(e) => updatePrimos(parseInt(e.target.value))} value={primos !== 0 ? primos : ""}></Form.Control>
               <Row className="mt-1">
                 <Col lg={"auto"}>
-                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 60)}>Commissions (+60)</Button>
+                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 60)}>Add Commissions (+60)</Button>
                 </Col>
                 <Col>
-                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 90)}>Welkin (+90)</Button>
+                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 90)}>Add Welkin (+90)</Button>
                 </Col>
               </Row>
             </Form.Group>
