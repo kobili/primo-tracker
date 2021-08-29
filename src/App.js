@@ -92,7 +92,7 @@ function App() {
         <Col lg={6} style={{textAlign : "center"}}>
           <p className="h4 mb-3">Total Pulls on Banner: {Math.floor(totalPulls)}</p>
           <div>You can hit hard pity {numberOfHardPities} {numberOfHardPities === 1 ? 'time' : 'times'}</div>
-          <div>You need {primosToNextHardPity} primos to reach your next hard pity</div>
+          <div>You need <span style={{color: "#0d6efd"}}>{primosToNextHardPity}</span> primos to reach your next hard pity</div>
         </Col>
       </Row>
     </Container>
