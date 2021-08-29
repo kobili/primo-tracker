@@ -12,9 +12,9 @@ import Button from 'react-bootstrap/Button';
 function App() {
 
   // state hooks
-  const [primos, setPrimos] = useState( parseInt(localStorage.getItem("primos")) || parseInt(0));
-  const [fates, setFates] = useState( parseInt(localStorage.getItem("fates")) || parseInt(0));
-  const [prevPulls, setPrevPulls] = useState( parseInt(localStorage.getItem("prevPulls")) || parseInt(0));
+  const [primos, setPrimos] = useState(parseInt(localStorage.getItem("primos")) || parseInt(0));
+  const [fates, setFates] = useState(parseInt(localStorage.getItem("fates")) || parseInt(0));
+  const [prevPulls, setPrevPulls] = useState(parseInt(localStorage.getItem("prevPulls")) || parseInt(0));
   const [totalPulls, setTotalPulls] = useState(0);
   const [numberOfHardPities, setNumberOfHardPities] = useState(0);
   const [primosToNextHardPity, setPrimosToNextHardPity] = useState(14400);
@@ -27,12 +27,9 @@ function App() {
 
   // use useEffect to save values to local storage when ever values are updated
   useEffect(() => {
-      localStorage.setItem("primos", primos);
-      localStorage.setItem("fates", fates);
-      localStorage.setItem("prevPulls", prevPulls);
-      // localStorage.setItem("totalPulls", totalPulls);
-      // localStorage.setItem("numberOfHardPities", numberOfHardPities);
-      // localStorage.setItem("primosToNextHardPity", primosToNextHardPity);
+    localStorage.setItem("primos", primos);
+    localStorage.setItem("fates", fates);
+    localStorage.setItem("prevPulls", prevPulls);
   }, [primos, fates, prevPulls]);
 
   // functions to update state
@@ -64,8 +61,8 @@ function App() {
   }
 
   return (
-    <Container className="mt-4">
-      <Row>
+    <Container className="mt-4" >
+      <Row className="justify-content-center">
         <Col lg={6}>
           <Form>
             <Form.Group className="mb-3" controlId="primos-amt">
@@ -89,15 +86,16 @@ function App() {
               <Form.Control type="number" min={0} onChange={(e) => updatePrevPulls(parseInt(e.target.value))} value={prevPulls !== 0 ? prevPulls : ""}></Form.Control>
             </Form.Group>
           </Form>
-          <div>Total Pulls on Banner: {Math.floor(totalPulls)}</div>
         </Col>
-        <Col lg={6} className="align-content-center">
+      </Row>
+      <Row className="justify-content-center">
+        <Col lg={6}>
+          <p className="h4 mb-3">Total Pulls on Banner: {Math.floor(totalPulls)}</p>
           <div>You can hit hard pity {numberOfHardPities} {numberOfHardPities === 1 ? 'time' : 'times'}</div>
           <div>You need {primosToNextHardPity} primos to reach your next hard pity</div>
         </Col>
       </Row>
     </Container>
-    
   );
 }
 
