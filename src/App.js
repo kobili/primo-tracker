@@ -69,11 +69,11 @@ function App() {
               <Form.Label>How many Primogems do you have?</Form.Label>
               <Form.Control type="number" min={0} onChange={(e) => updatePrimos(parseInt(e.target.value))} value={primos !== 0 ? primos : ""}></Form.Control>
               <Row className="mt-1">
-                <Col lg={"auto"}>
+                <Col >
                   <Button variant="outline-primary" onClick={() => updatePrimos(primos + 60)}>Add Commissions (+60)</Button>
                 </Col>
                 <Col>
-                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 90)}>Add Welkin (+90)</Button>
+                  <Button className="float-end" variant="outline-primary" onClick={() => updatePrimos(primos + 90)}>Add Welkin (+90)</Button>
                 </Col>
               </Row>
             </Form.Group>
@@ -89,7 +89,7 @@ function App() {
         </Col>
       </Row>
       <Row className="justify-content-center">
-        <Col lg={6}>
+        <Col lg={6} style={{textAlign : "center"}}>
           <p className="h4 mb-3">Total Pulls on Banner: {Math.floor(totalPulls)}</p>
           <div>You can hit hard pity {numberOfHardPities} {numberOfHardPities === 1 ? 'time' : 'times'}</div>
           <div>You need {primosToNextHardPity} primos to reach your next hard pity</div>
