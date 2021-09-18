@@ -16,7 +16,8 @@ function MaterialInputBox({value, setValue}) {
     };
 
     const buttonStyle = {
-        height: "65px"
+        height: "65px",
+        width: "36px"
     }
 
     return (
