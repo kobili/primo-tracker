@@ -33,8 +33,9 @@ function MaterialInputBox({value, setValue}) {
                     <Form.Control
                         style={inputBoxStyle}
                         value={value}
+                        min={0}
                         type="number"
-                        onChange={(e) => setValue(isNaN(e.target.value) ? value : parseInt(e.target.value))}
+                        onChange={(e) => setValue(parseInt(e.target.value))}
                     />
                 </div>
                 <div className="col-auto p-0">
