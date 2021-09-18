@@ -6,13 +6,34 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-function MaterialInputBox({value, setValue}) {
+import BrownBookBackground from '../images/brown_book.png';
+import SilverBookBackground from '../images/silver_book.png';
+import GoldBookBackground from '../images/gold_book.png';
+
+
+// type is one of: "gold", "silver", "brown"
+
+function MaterialInputBox({value, setValue, type}) {
+
+    const colors = {
+        "gold": "#f2ca5a",
+        "silver": "#5e5c57",
+        "brown": "#634800"
+    }
+
+    const backgroundImages = {
+        "gold": `url(${GoldBookBackground})`,
+        "silver": `url(${SilverBookBackground})`,
+        "brown": `url(${BrownBookBackground})`
+    }
 
     const inputBoxStyle = {
         width: "65px",
         height: "65px",
         fontSize: "20px",
-        textAlign: "center"
+        textAlign: "center",
+        boxShadow: `0 0 20px inset ${colors[type]}`
+        // backgroundImage: backgroundImages[type]
     };
 
     const buttonStyle = {

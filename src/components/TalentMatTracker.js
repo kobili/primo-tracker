@@ -18,7 +18,7 @@ function TalentMatTracker() {
     let [brownBooksAcquired, setBrownBooksAcquired] = useState(parseInt(localStorage.getItem("brownBooks")) || parseInt(0));
 
     let [totalGoldBooks, setTotalGoldBooks] = useState(0);
-    let [totalSilverBooks, setTotalSilverBooks] = useState(0);
+    // let [totalSilverBooks, setTotalSilverBooks] = useState(0);
 
 
     useEffect(() => {
@@ -42,7 +42,7 @@ function TalentMatTracker() {
         let goldBooks = goldBooksAcquired + Math.floor(spareSilverBooks / 3);
 
         setTotalGoldBooks(goldBooks);
-        setTotalSilverBooks(silverBooks);
+        // setTotalSilverBooks(silverBooks);
     }
 
     return (
@@ -52,18 +52,21 @@ function TalentMatTracker() {
                 <MaterialInputBox
                     value={goldBooksAcquired}
                     setValue={setGoldBooksAcquired}
+                    type={"gold"}
                 />
 
                 {/* Input for silver books */}
                 <MaterialInputBox
                     value={silverBooksAcquired}
                     setValue={setSilverBooksAcquired}
+                    type={"silver"}
                 />
 
                 {/* Input for brown books */}
                 <MaterialInputBox
                     value={brownBooksAcquired}
                     setValue={setBrownBooksAcquired}
+                    type={"brown"}
                 />
             </Row>
             <Row className="justify-content-center mb-3">
