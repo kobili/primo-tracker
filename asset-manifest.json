@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/genshin-primo-helper/static/css/main.fe4e5423.chunk.css",
-    "main.js": "/genshin-primo-helper/static/js/main.973ae4c2.chunk.js",
-    "main.js.map": "/genshin-primo-helper/static/js/main.973ae4c2.chunk.js.map",
+    "main.js": "/genshin-primo-helper/static/js/main.52b0b545.chunk.js",
+    "main.js.map": "/genshin-primo-helper/static/js/main.52b0b545.chunk.js.map",
     "runtime-main.js": "/genshin-primo-helper/static/js/runtime-main.900cecfc.js",
     "runtime-main.js.map": "/genshin-primo-helper/static/js/runtime-main.900cecfc.js.map",
     "static/css/2.c490997a.chunk.css": "/genshin-primo-helper/static/css/2.c490997a.chunk.css",
@@ -11,13 +11,16 @@
     "index.html": "/genshin-primo-helper/index.html",
     "static/css/2.c490997a.chunk.css.map": "/genshin-primo-helper/static/css/2.c490997a.chunk.css.map",
     "static/css/main.fe4e5423.chunk.css.map": "/genshin-primo-helper/static/css/main.fe4e5423.chunk.css.map",
-    "static/js/2.237f56b6.chunk.js.LICENSE.txt": "/genshin-primo-helper/static/js/2.237f56b6.chunk.js.LICENSE.txt"
+    "static/js/2.237f56b6.chunk.js.LICENSE.txt": "/genshin-primo-helper/static/js/2.237f56b6.chunk.js.LICENSE.txt",
+    "static/media/brown_book.aebf6d4e.png": "/genshin-primo-helper/static/media/brown_book.aebf6d4e.png",
+    "static/media/gold_book.6c416614.png": "/genshin-primo-helper/static/media/gold_book.6c416614.png",
+    "static/media/silver_book.bbc54768.png": "/genshin-primo-helper/static/media/silver_book.bbc54768.png"
   },
   "entrypoints": [
     "static/js/runtime-main.900cecfc.js",
     "static/css/2.c490997a.chunk.css",
     "static/js/2.237f56b6.chunk.js",
     "static/css/main.fe4e5423.chunk.css",
-    "static/js/main.973ae4c2.chunk.js"
+    "static/js/main.52b0b545.chunk.js"
   ]
 }
