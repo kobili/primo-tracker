@@ -11,10 +11,7 @@ export const store = configureStore({
     preloadedState: existingState
 });
 
-store.subscribe(() => {
-    const currentState = store.getState();
-    persistToLocalStorage(currentState);
-});
+store.subscribe(() => persistToLocalStorage(store.getState()));
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
