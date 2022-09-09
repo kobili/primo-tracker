@@ -1,10 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import bannerDataReducer from './slices/bannerDataSlice';
+import { persistToLocalStorage, loadFromLocalStorage } from '../localStorage';
+
+const existingState = loadFromLocalStorage();
 
 export const store = configureStore({
     reducer: {
         bannerData: bannerDataReducer
-    }
+    },
+    preloadedState: existingState
+});
+
+store.subscribe(() => {
+    const currentState = store.getState();
+    persistToLocalStorage(currentState);
 });
 
 export type RootState = ReturnType<typeof store.getState>;
