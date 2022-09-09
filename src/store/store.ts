@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import bannerDataReducer from './slices/bannerDataSlice';
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
         bannerData: bannerDataReducer
     }
