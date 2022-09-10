@@ -14,10 +14,11 @@ import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { selectPrimogems, setPrimogems } from '../../store/slices/bannerDataSlice';
 
 import type { RootState } from '../../store/store';
-import { BannerType } from './BannerTypes';
+import { BannerType, BannerCurrency } from './BannerAttributes';
 
 export interface BannerInfoProps {
   bannerType: BannerType,
+  bannerCurrency: BannerCurrency,
   fateSelector: (state: RootState) => number,
   pullSelector: (state: RootState) => number,
   fateSetter: ActionCreatorWithPayload<number, string>,
@@ -26,7 +27,7 @@ export interface BannerInfoProps {
 
 function BannerInfo(props: BannerInfoProps) {
 
-  const { bannerType, fateSelector, pullSelector, fateSetter, pullSetter } = props;
+  const { bannerType, bannerCurrency, fateSelector, pullSelector, fateSetter, pullSetter } = props;
 
   const dispatch = useDispatch();
 
@@ -140,7 +141,7 @@ function BannerInfo(props: BannerInfoProps) {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="fates-amt">
-              <Form.Label>How many Fates do you have?</Form.Label>
+              <Form.Label>How many <span style={{ color: bannerCurrency === BannerCurrency.ACQUAINT ? "#0d6efd" : "#f542e9"}}>{bannerCurrency}</span> do you have?</Form.Label>
               <Row>
                 <Col>
                   <Form.Control type="number" min={0} onChange={(e) => dispatch(fateSetter(parseInt(e.target.value)))} value={fates !== 0 ? fates : ""}></Form.Control>

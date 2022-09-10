@@ -3,3 +3,8 @@ export enum BannerType {
     WEAPON = "Weapon",
     STANDARD = "Standard"
 }
+
+export enum BannerCurrency {
+    ACQUAINT = "Acquaint Fates",
+    INTERTWINED = "Intertwined Fates"
+}
