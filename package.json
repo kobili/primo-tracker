@@ -2,7 +2,7 @@
   "name": "primogem-tool",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kobili.github.io/genshin-primo-helper",
+  "homepage": "https://kobili.github.io/primo-tracker",
   "dependencies": {
     "bootstrap": "^5.1.0",
     "gh-pages": "^3.2.3",
