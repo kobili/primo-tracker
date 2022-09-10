@@ -53,10 +53,11 @@ function BannerInfo(props: BannerInfoProps) {
     let updatedTotalPulls = pullsFromPrimos + fates + prevPulls
     setTotalPulls(updatedTotalPulls);
 
-    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / 90);
+    let hardPityPulls = bannerType === BannerType.WEAPON ? 80 : 90;
+    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / hardPityPulls);
     setNumberOfHardPities(updatedNumberOfHardPities);
 
-    let primosToNextPity = Math.ceil((90 - (updatedTotalPulls % 90)) * 160);
+    let primosToNextPity = Math.ceil((hardPityPulls - (updatedTotalPulls % hardPityPulls)) * 160);
     setPrimosToNextHardPity(primosToNextPity);
 
     // update whether or not single or ten pulls are possible
