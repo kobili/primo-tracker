@@ -14,7 +14,7 @@ import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { selectPrimogems, setPrimogems } from '../../store/slices/bannerDataSlice';
 
 import type { RootState } from '../../store/store';
-import { BannerType, BannerCurrency } from './BannerAttributes';
+import { BannerType, BannerCurrency } from './BannerEnums';
 
 export interface BannerInfoProps {
   bannerType: BannerType,
