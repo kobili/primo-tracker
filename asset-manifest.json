@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/genshin-primo-helper/static/css/main.9bd7a35e.css",
-    "main.js": "/genshin-primo-helper/static/js/main.aba4b753.js",
+    "main.js": "/genshin-primo-helper/static/js/main.40617918.js",
     "index.html": "/genshin-primo-helper/index.html",
     "main.9bd7a35e.css.map": "/genshin-primo-helper/static/css/main.9bd7a35e.css.map",
-    "main.aba4b753.js.map": "/genshin-primo-helper/static/js/main.aba4b753.js.map"
+    "main.40617918.js.map": "/genshin-primo-helper/static/js/main.40617918.js.map"
   },
   "entrypoints": [
     "static/css/main.9bd7a35e.css",
-    "static/js/main.aba4b753.js"
+    "static/js/main.40617918.js"
   ]
 }
