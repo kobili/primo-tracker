@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import PrimogemCalc from './components/bannerData/PrimogemCalc';
+import BannerPages from './components/bannerData';
 
 function App() {
   return (
-    <PrimogemCalc />
+    <BannerPages />
   );
 }
 
