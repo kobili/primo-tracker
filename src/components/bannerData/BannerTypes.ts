@@ -1,5 +1,5 @@
 export enum BannerType {
-    CHARACTER,
-    WEAPON,
-    STANDARD
+    CHARACTER = "Character",
+    WEAPON = "Weapon",
+    STANDARD = "Standard"
 }

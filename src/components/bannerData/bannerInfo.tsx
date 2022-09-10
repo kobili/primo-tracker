@@ -15,11 +15,7 @@ import { selectPrimogems, setPrimogems } from '../../store/slices/bannerDataSlic
 
 import type { RootState } from '../../store/store';
 
-import { BannerType } from './BannerTypes'
-
 export interface BannerInfoProps {
-  bannerName: string,
-  bannerType: BannerType,
   fateSelector: (state: RootState) => number,
   pullSelector: (state: RootState) => number,
   fateSetter: ActionCreatorWithPayload<number, string>,
@@ -28,7 +24,7 @@ export interface BannerInfoProps {
 
 function BannerInfo(props: BannerInfoProps) {
 
-  const { bannerName, bannerType, fateSelector, pullSelector, fateSetter, pullSetter } = props;
+  const { fateSelector, pullSelector, fateSetter, pullSetter } = props;
 
   const dispatch = useDispatch();
 
