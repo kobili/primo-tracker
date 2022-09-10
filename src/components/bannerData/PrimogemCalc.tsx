@@ -10,15 +10,28 @@ import Button from 'react-bootstrap/Button';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { selectPrimogems, selectFates, selectPreviousPulls, setPrimoGems, setFates, setPreviousPulls } from '../../store/slices/bannerDataSlice';
+import { 
+  selectPrimogems, 
+  selectIntertwinedFates,
+  selectAcquaintFates,
+  selectCharacterBannerPulls,
+  selectWeaponBannerPulls,
+  selectStandardBannerPulls,
+  setPrimogems,
+  setIntertwinedFates,
+  setAcquaintFates,
+  setCharacterBannerPulls,
+  setWeaponBannerPulls,
+  setStandardBannerPulls
+} from '../../store/slices/bannerDataSlice';
 
 function PrimogemCalc() {
 
   const dispatch = useDispatch();
 
   const primos = useSelector(selectPrimogems);
-  const fates = useSelector(selectFates);
-  const prevPulls = useSelector(selectPreviousPulls);
+  const fates = useSelector(selectIntertwinedFates);
+  const prevPulls = useSelector(selectCharacterBannerPulls);
 
   const [totalPulls, setTotalPulls] = useState(0);
   const [numberOfHardPities, setNumberOfHardPities] = useState(0);
@@ -53,28 +66,28 @@ function PrimogemCalc() {
   const doSinglePull = () => {
     if (fates >= 1) {
 
-      dispatch(setFates(fates - 1));
-      dispatch(setPreviousPulls(prevPulls + 1));
+      dispatch(setIntertwinedFates(fates - 1));
+      dispatch(setCharacterBannerPulls(prevPulls + 1));
     } else if (primos >= 160) {
-      dispatch(setPrimoGems(primos - 160));
-      dispatch(setPreviousPulls(prevPulls + 1));
+      dispatch(setPrimogems(primos - 160));
+      dispatch(setCharacterBannerPulls(prevPulls + 1));
     }
   }
 
   const doTenPull = () => {
     if (fates >= 10) {
-      dispatch(setFates(fates - 10));
-      dispatch(setPreviousPulls(prevPulls + 10));
+      dispatch(setIntertwinedFates(fates - 10));
+      dispatch(setCharacterBannerPulls(prevPulls + 10));
     } else if (fates > 0) {
       let primosToMakeDifference = 1600 - (fates * 160);
       if (primos >= primosToMakeDifference) {
-        dispatch(setFates(0));
-        dispatch(setPrimoGems(primos - primosToMakeDifference));
-        dispatch(setPreviousPulls(prevPulls + 10));
+        dispatch(setIntertwinedFates(0));
+        dispatch(setPrimogems(primos - primosToMakeDifference));
+        dispatch(setCharacterBannerPulls(prevPulls + 10));
       }
     } else if (primos >= 1600) {
-      dispatch(setPrimoGems(primos - 1600));
-      dispatch(setPreviousPulls(prevPulls + 10));
+      dispatch(setPrimogems(primos - 1600));
+      dispatch(setCharacterBannerPulls(prevPulls + 10));
     }
   }
 
@@ -114,13 +127,13 @@ function PrimogemCalc() {
               <Form.Label>How many Primogems do you have?</Form.Label>
               <Row>
                 <Col>
-                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setPrimoGems(parseInt(e.target.value)))} value={primos !== 0 ? primos : ""}></Form.Control>
+                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setPrimogems(parseInt(e.target.value)))} value={primos !== 0 ? primos : ""}></Form.Control>
                 </Col>
                 <div className="col-auto">
-                  <Button variant="outline-primary" onClick={() => dispatch(setPrimoGems(primos + 60))}>Add Dailies (+60)</Button>
+                  <Button variant="outline-primary" onClick={() => dispatch(setPrimogems(primos + 60))}>Add Dailies (+60)</Button>
                 </div>
                 <div className="col-auto">
-                  <Button variant="outline-primary" onClick={() => dispatch(setPrimoGems(primos + 90))}>Add Welkin (+90)</Button>
+                  <Button variant="outline-primary" onClick={() => dispatch(setPrimogems(primos + 90))}>Add Welkin (+90)</Button>
                 </div>
               </Row>
             </Form.Group>
@@ -129,10 +142,10 @@ function PrimogemCalc() {
               <Form.Label>How many Fates do you have?</Form.Label>
               <Row>
                 <Col>
-                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setFates(parseInt(e.target.value)))} value={fates !== 0 ? fates : ""}></Form.Control>
+                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setIntertwinedFates(parseInt(e.target.value)))} value={fates !== 0 ? fates : ""}></Form.Control>
                 </Col>
                 <div className="col-auto">
-                  <Button variant="outline-primary" onClick={() => dispatch(setFates(fates + 1))}>Add One</Button>
+                  <Button variant="outline-primary" onClick={() => dispatch(setIntertwinedFates(fates + 1))}>Add One</Button>
                 </div>
               </Row>
             </Form.Group>
@@ -141,7 +154,7 @@ function PrimogemCalc() {
               <Form.Label>How many pulls have you already done?</Form.Label>
               <Row>
                 <Col>
-                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setPreviousPulls(parseInt(e.target.value)))} value={prevPulls !== 0 ? prevPulls : ""}></Form.Control>
+                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setCharacterBannerPulls(parseInt(e.target.value)))} value={prevPulls !== 0 ? prevPulls : ""}></Form.Control>
                 </Col>
                 <div className="col-auto">
                   <Button variant="outline-primary" disabled={!canDoSinglePull} onClick={doSinglePull}>1 Pull</Button>
