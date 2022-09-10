@@ -8,17 +8,24 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectPrimogems, selectFates, selectPreviousPulls, setPrimoGems, setFates, setPreviousPulls } from '../../store/slices/bannerDataSlice';
+
 function PrimogemCalc() {
 
-  // state hooks
-  const [primos, setPrimos] = useState(parseInt(localStorage.getItem("primos")) || parseInt(0));
-  const [fates, setFates] = useState(parseInt(localStorage.getItem("fates")) || parseInt(0));
-  const [prevPulls, setPrevPulls] = useState(parseInt(localStorage.getItem("prevPulls")) || parseInt(0));
+  const dispatch = useDispatch();
+
+  const primos = useSelector(selectPrimogems);
+  const fates = useSelector(selectFates);
+  const prevPulls = useSelector(selectPreviousPulls);
+
   const [totalPulls, setTotalPulls] = useState(0);
   const [numberOfHardPities, setNumberOfHardPities] = useState(0);
   const [primosToNextHardPity, setPrimosToNextHardPity] = useState(14400);
   const [canDoSinglePull, setCanDoSinglePull] = useState(false);        // use this state variable to enable/disable single pull button
   const [canDoTenPull, setCanDoTenPull] = useState(false);              // use this state variable to enable/disable ten pull button
+
 
   // useEffect to run a function on page load
   useEffect(() => {
@@ -26,30 +33,7 @@ function PrimogemCalc() {
     updateTotalPulls(primos, fates, prevPulls);
   });
 
-  // use useEffect to save values to local storage when ever values are updated
-  useEffect(() => {
-    localStorage.setItem("primos", primos);
-    localStorage.setItem("fates", fates);
-    localStorage.setItem("prevPulls", prevPulls);
-  }, [primos, fates, prevPulls]);
-
-  // functions to update state
-  const updatePrimos = (newValue) => {  // newValue is a number
-    setPrimos(newValue);
-    updateTotalPulls(newValue, fates, prevPulls);
-  };
-
-  const updateFates = (newValue) => {
-    setFates(newValue);
-    updateTotalPulls(primos, newValue, prevPulls);
-  };
-
-  const updatePrevPulls = (newValue) => {
-    setPrevPulls(newValue);
-    updateTotalPulls(primos, fates, newValue);
-  }
-
-  const updateTotalPulls = (primos, fates, prevPulls) => {
+  const updateTotalPulls = (primos: number, fates: number, prevPulls: number) => {
     let pullsFromPrimos = primos / 160;
     let updatedTotalPulls = pullsFromPrimos + fates + prevPulls
     setTotalPulls(updatedTotalPulls);
@@ -68,28 +52,29 @@ function PrimogemCalc() {
   // event handlers for the single and ten pull buttons
   const doSinglePull = () => {
     if (fates >= 1) {
-      setFates(fates - 1);
-      updatePrevPulls(prevPulls + 1);
+
+      dispatch(setFates(fates - 1));
+      dispatch(setPreviousPulls(prevPulls + 1));
     } else if (primos >= 160) {
-      setPrimos(primos - 160);
-      updatePrevPulls(prevPulls + 1);
+      dispatch(setPrimoGems(primos - 160));
+      dispatch(setPreviousPulls(prevPulls + 1));
     }
   }
 
   const doTenPull = () => {
     if (fates >= 10) {
-      setFates(fates - 10);
-      updatePrevPulls(prevPulls + 10);
+      dispatch(setFates(fates - 10));
+      dispatch(setPreviousPulls(prevPulls + 10));
     } else if (fates > 0) {
       let primosToMakeDifference = 1600 - (fates * 160);
       if (primos >= primosToMakeDifference) {
-        setFates(0);
-        setPrimos(primos - primosToMakeDifference);
-        updatePrevPulls(prevPulls + 10);
+        dispatch(setFates(0));
+        dispatch(setPrimoGems(primos - primosToMakeDifference));
+        dispatch(setPreviousPulls(prevPulls + 10));
       }
     } else if (primos >= 1600) {
-      setPrimos(primos - 1600);
-      updatePrevPulls(prevPulls + 10);
+      dispatch(setPrimoGems(primos - 1600));
+      dispatch(setPreviousPulls(prevPulls + 10));
     }
   }
 
@@ -129,13 +114,13 @@ function PrimogemCalc() {
               <Form.Label>How many Primogems do you have?</Form.Label>
               <Row>
                 <Col>
-                  <Form.Control type="number" min={0} onChange={(e) => updatePrimos(parseInt(e.target.value))} value={primos !== 0 ? primos : ""}></Form.Control>
+                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setPrimoGems(parseInt(e.target.value)))} value={primos !== 0 ? primos : ""}></Form.Control>
                 </Col>
                 <div className="col-auto">
-                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 60)}>Add Dailies (+60)</Button>
+                  <Button variant="outline-primary" onClick={() => dispatch(setPrimoGems(primos + 60))}>Add Dailies (+60)</Button>
                 </div>
                 <div className="col-auto">
-                  <Button variant="outline-primary" onClick={() => updatePrimos(primos + 90)}>Add Welkin (+90)</Button>
+                  <Button variant="outline-primary" onClick={() => dispatch(setPrimoGems(primos + 90))}>Add Welkin (+90)</Button>
                 </div>
               </Row>
             </Form.Group>
@@ -144,10 +129,10 @@ function PrimogemCalc() {
               <Form.Label>How many Fates do you have?</Form.Label>
               <Row>
                 <Col>
-                  <Form.Control type="number" min={0} onChange={(e) => updateFates(parseInt(e.target.value))} value={fates !== 0 ? fates : ""}></Form.Control>
+                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setFates(parseInt(e.target.value)))} value={fates !== 0 ? fates : ""}></Form.Control>
                 </Col>
                 <div className="col-auto">
-                  <Button variant="outline-primary" onClick={() => updateFates(fates + 1)}>Add One</Button>
+                  <Button variant="outline-primary" onClick={() => dispatch(setFates(fates + 1))}>Add One</Button>
                 </div>
               </Row>
             </Form.Group>
@@ -156,7 +141,7 @@ function PrimogemCalc() {
               <Form.Label>How many pulls have you already done?</Form.Label>
               <Row>
                 <Col>
-                  <Form.Control type="number" min={0} onChange={(e) => updatePrevPulls(parseInt(e.target.value))} value={prevPulls !== 0 ? prevPulls : ""}></Form.Control>
+                  <Form.Control type="number" min={0} onChange={(e) => dispatch(setPreviousPulls(parseInt(e.target.value)))} value={prevPulls !== 0 ? prevPulls : ""}></Form.Control>
                 </Col>
                 <div className="col-auto">
                   <Button variant="outline-primary" disabled={!canDoSinglePull} onClick={doSinglePull}>1 Pull</Button>
