@@ -14,8 +14,10 @@ import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { selectPrimogems, setPrimogems } from '../../store/slices/bannerDataSlice';
 
 import type { RootState } from '../../store/store';
+import { BannerType } from './BannerTypes';
 
 export interface BannerInfoProps {
+  bannerType: BannerType,
   fateSelector: (state: RootState) => number,
   pullSelector: (state: RootState) => number,
   fateSetter: ActionCreatorWithPayload<number, string>,
@@ -24,7 +26,7 @@ export interface BannerInfoProps {
 
 function BannerInfo(props: BannerInfoProps) {
 
-  const { fateSelector, pullSelector, fateSetter, pullSetter } = props;
+  const { bannerType, fateSelector, pullSelector, fateSetter, pullSetter } = props;
 
   const dispatch = useDispatch();
 
@@ -169,7 +171,7 @@ function BannerInfo(props: BannerInfoProps) {
       </Row>
       <Row className="justify-content-center">
         <Col lg={6} style={{ textAlign: "center" }}>
-          <p className="h4 mb-3">Total Pulls on Banner: {Math.floor(totalPulls)}</p>
+          <p className="h4 mb-3">Total Pulls on {bannerType} Banner: {Math.floor(totalPulls)}</p>
           <div>You can hit hard pity {numberOfHardPities} {numberOfHardPities === 1 ? 'time' : 'times'}</div>
           <div>You need <span style={{ color: "#0d6efd" }}>{primosToNextHardPity}</span> primos to reach your next hard pity</div>
         </Col>

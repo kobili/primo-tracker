@@ -15,12 +15,14 @@ import {
   setWeaponBannerPulls,
   setStandardBannerPulls
 } from '../../store/slices/bannerDataSlice';
+import { BannerType } from './BannerTypes';
 
 function BannerPages() {
     return (
         <Tabs defaultActiveKey="character-banner" id="application-tab" className="mb-3">
             <Tab eventKey="character-banner" title="Character Banner">
             <BannerInfo
+                bannerType={BannerType.CHARACTER}
                 fateSelector={selectIntertwinedFates}
                 pullSelector={selectCharacterBannerPulls}
                 fateSetter={setIntertwinedFates}
@@ -29,6 +31,7 @@ function BannerPages() {
             </Tab>
             <Tab eventKey="weapon-banner" title="Weapon Banner">
             <BannerInfo
+                bannerType={BannerType.WEAPON}
                 fateSelector={selectIntertwinedFates}
                 pullSelector={selectWeaponBannerPulls}
                 fateSetter={setIntertwinedFates}
@@ -37,6 +40,7 @@ function BannerPages() {
             </Tab>
             <Tab eventKey="standard-banner" title="Standard Banner">
             <BannerInfo
+                bannerType={BannerType.STANDARD}
                 fateSelector={selectAcquaintFates}
                 pullSelector={selectStandardBannerPulls}
                 fateSetter={setAcquaintFates}

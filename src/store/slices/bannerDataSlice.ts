@@ -28,10 +28,10 @@ const bannerSlice = createSlice({
             state.characterBannerPulls = action.payload > 0 ? action.payload : 0;
         },
         setWeaponBannerPulls: (state, action: PayloadAction<number>) => {
-            state.characterBannerPulls = action.payload > 0 ? action.payload : 0;
+            state.weaponBannerPulls = action.payload > 0 ? action.payload : 0;
         },
         setStandardBannerPulls: (state, action: PayloadAction<number>) => {
-            state.characterBannerPulls = action.payload > 0 ? action.payload : 0;
+            state.standardBannerPulls = action.payload > 0 ? action.payload : 0;
         }
     }
 });
