@@ -21,16 +21,16 @@ export const PrimogemInput = () => {
             <ButtonGroup>
                 <Button>+60</Button>
                 <Button>+90</Button>
-                {/* <Button style={{marginRight: '20px'}} onClick={() => setShouldShowOptions(!shouldShowOptions)}>{'>'}</Button> */}
+                <Button style={{ marginRight: '10px' }} onClick={() => setShouldShowOptions(!shouldShowOptions)}>{shouldShowOptions ? '<' : '>'}</Button>
             </ButtonGroup>
-            {/* <ButtonGroup>
+
+            {shouldShowOptions && <ButtonGroup>
                 <Button>+1</Button>
                 <Button>+2</Button>
                 <Button>+5</Button>
                 <Button>+10</Button>
                 <Button>+20</Button>
-            </ButtonGroup> */}
-
+            </ButtonGroup>}
         </InputContainer>
     );
 }
