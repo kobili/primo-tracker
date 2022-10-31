@@ -4,7 +4,6 @@ const INPUT_AND_BUTTON_HEIGHT = "36px";
 
 export const InputContainer = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
     width: 100%;

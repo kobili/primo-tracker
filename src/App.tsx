@@ -14,11 +14,11 @@ const ColumnFlex = styled.div`
 function App() {
   return (
     // <BannerPages />
-    <ColumnFlex>
+    <>
       <PrimogemInput></PrimogemInput>
       <FatesInput icon={blueFate}></FatesInput>
       <FatesInput icon={pinkFate}></FatesInput>
-    </ColumnFlex>
+    </>
     
   );
 }
