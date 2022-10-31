@@ -4,10 +4,7 @@ import { Button } from '../SharedComponents';
 import type { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { 
-  selectPrimogems,
-  setPrimogems
-} from '../../store/slices/bannerDataSlice';
+import { selectPrimogems } from '../../store/slices/bannerDataSlice';
 import { useEffect, useState } from 'react';
 
 const ColumnFlex = styled.div`
@@ -33,7 +30,7 @@ const Text = styled.p`
 
 const BlueText = styled.span`
     color: #0d6efd;`;
-  
+
 const Input = styled.input`
   max-width: 500px;
   padding: 7px;
@@ -51,11 +48,25 @@ export interface BannerInfoProps {
   pitySelector: (state: RootState) => number;
   pitySetter: ActionCreatorWithPayload<number, string>;
   fatesSelector: (state: RootState) => number;
-  fatesSetter: ActionCreatorWithPayload<number, string>,
+  bannerTenPullWithFatesAndPrimosAction: ActionCreatorWithPayload<{ pity: number, fates: number, primos: number }>;
+  bannerTenPullWithFatesAction: ActionCreatorWithPayload<{ pity: number, fates: number }>;
+  bannerTenPullWithPrimosAction: ActionCreatorWithPayload<{ pity: number, primos: number }>;
+  bannerPullWithFatesAction: ActionCreatorWithPayload<{ pity: number, fates: number }>;
+  bannerPullWithPrimosAction: ActionCreatorWithPayload<{ pity: number, primos: number }>;
 }
 
 export const BannerInfo = (props: BannerInfoProps) => {
-  const { type, pitySelector, pitySetter, fatesSelector, fatesSetter } = props;
+  const {
+    type,
+    pitySelector,
+    pitySetter,
+    fatesSelector,
+    bannerTenPullWithFatesAndPrimosAction,
+    bannerTenPullWithFatesAction,
+    bannerTenPullWithPrimosAction,
+    bannerPullWithFatesAction,
+    bannerPullWithPrimosAction
+  } = props;
 
   const dispatch = useDispatch();
   const pity = useSelector(pitySelector);
@@ -94,27 +105,43 @@ export const BannerInfo = (props: BannerInfoProps) => {
   // event handlers for the single and ten pull buttons
   const doSinglePull = () => {
     if (fates >= 1) {
-      dispatch(fatesSetter(fates - 1));
+      const payload = {
+        pity: pity + 1,
+        fates: fates - 1
+      }
+      dispatch(bannerPullWithFatesAction(payload));
     } else if (primos >= 160) {
-      dispatch(setPrimogems(primos - 160));
+      const payload = {
+        pity: pity + 1,
+        primos: primos - 160
+      }
+      dispatch(bannerPullWithPrimosAction(payload));
     }
-    dispatch(pitySetter(pity + 1))
   }
 
   const doTenPull = () => {
     if (fates >= 10) {
-      dispatch(fatesSetter(fates - 10));
-      dispatch(pitySetter(pity + 10));
+      const payload = {
+        pity: pity + 10,
+        fates: fates - 10
+      };
+      dispatch(bannerTenPullWithFatesAction(payload));
     } else if (fates > 0) {
       let primosToMakeDifference = 1600 - (fates * 160);
       if (primos >= primosToMakeDifference) {
-        dispatch(fatesSetter(0));
-        dispatch(setPrimogems(primos - primosToMakeDifference));
-        dispatch(pitySetter(pity + 10));
+        const payload = {
+          pity: pity + 10,
+          fates: 0,
+          primos: primos - primosToMakeDifference
+        }
+        dispatch(bannerTenPullWithFatesAndPrimosAction(payload));
       }
     } else if (primos >= 1600) {
-      dispatch(setPrimogems(primos - 1600));
-      dispatch(pitySetter(pity + 10));
+      const payload = {
+        pity: pity + 10,
+        primos: primos - 1600
+      };
+      dispatch(bannerTenPullWithPrimosAction(payload));
     }
   }
 
@@ -145,7 +172,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
   return (
     <ColumnFlex>
       <Title>
-        {`${type} Banner`} 
+        {`${type} Banner`}
       </Title>
       <IndentedDiv>
         <RowFlex>
@@ -154,7 +181,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
           <Button disabled={!canDoSinglePull} onClick={doSinglePull}>1 pull</Button>
           <Button disabled={!canDoTenPull} onClick={doTenPull}>10 pull</Button>
         </RowFlex>
-        <TotalPulls>Total pulls on Character Banner: {totalPulls}</TotalPulls>
+        <TotalPulls>Total pulls on {type} Banner: {totalPulls}</TotalPulls>
         <Text>You can hit hard pity {numberOfHardPities} times</Text>
         <Text>You need <BlueText>{primosToNextHardPity}</BlueText> primos to reach your next hard pity</Text>
       </IndentedDiv>
