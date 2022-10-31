@@ -19,8 +19,13 @@ const IndentedDiv = styled.div`
 `;
 const TotalPulls = styled.h5`
   margin-bottom: 0px;`
-const Text = styled.p`margin-bottom: 0px;`;
 
+const Text = styled.p`
+  margin-bottom: 0px;`;
+
+const BlueText = styled.span`
+    color: #0d6efd;`;
+  
 const Input = styled.input`
   max-width: 500px;
   padding: 7px;
@@ -53,7 +58,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
         </RowFlex>
         <TotalPulls>Total pulls on Character Banner: {247}</TotalPulls>
         <Text>You can hit hard pity {2} times</Text>
-        <Text>You need {3351} primos to reach your next hard pity</Text>
+        <Text>You need <BlueText>{3351}</BlueText> primos to reach your next hard pity</Text>
       </IndentedDiv>
 
     </ColumnFlex>
