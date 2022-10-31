@@ -157,7 +157,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
           dispatch(weaponBannerTenPullWithFatesAction(payload));
           break;
         case BannerType.STANDARD:
-          dispatch(standardBannerPullWithFatesAction(payload));
+          dispatch(standardBannerTenPullWithFatesAction(payload));
           break;
       }
       
