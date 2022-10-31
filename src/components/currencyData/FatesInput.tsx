@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import type { RootState } from '../../store/store';
 
-import { BannerCurrency } from '../BannerEnums';
-
 export interface FatesInputProps {
     icon: string;
     selector: (state: RootState) => number,

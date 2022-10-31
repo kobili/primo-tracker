@@ -102,19 +102,17 @@ export const BannerInfo = (props: BannerInfoProps) => {
   }
 
   const doTenPull = () => {
+    dispatch(pitySetter(pity + 10));
     if (fates >= 10) {
       dispatch(fatesSetter(fates - 10));
-      dispatch(pitySetter(pity + 10));
     } else if (fates > 0) {
       let primosToMakeDifference = 1600 - (fates * 160);
       if (primos >= primosToMakeDifference) {
         dispatch(fatesSetter(0));
         dispatch(setPrimogems(primos - primosToMakeDifference));
-        dispatch(pitySetter(pity + 10));
       }
     } else if (primos >= 1600) {
       dispatch(setPrimogems(primos - 1600));
-      dispatch(pitySetter(pity + 10));
     }
   }
 
