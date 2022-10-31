@@ -1,6 +1,23 @@
 import { createAction, createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
+import {
+    characterBannerTenPullWithFatesAndPrimosAction,
+    characterBannerTenPullWithFatesAction,
+    characterBannerTenPullWithPrimosAction,
+    characterBannerPullWithFatesAction,
+    characterBannerPullWithPrimosAction,
+    weaponBannerTenPullWithFatesAndPrimosAction,
+    weaponBannerTenPullWithFatesAction,
+    weaponBannerTenPullWithPrimosAction,
+    weaponBannerPullWithFatesAction,
+    weaponBannerPullWithPrimosAction,
+    standardBannerTenPullWithFatesAndPrimosAction,
+    standardBannerTenPullWithFatesAction,
+    standardBannerTenPullWithPrimosAction,
+    standardBannerPullWithFatesAction,
+    standardBannerPullWithPrimosAction
+} from '../actions/PullActions';
 
 const initialState = {
     primogems: 0,
@@ -11,23 +28,7 @@ const initialState = {
     standardBannerPity: 0
 };
 
-export const characterBannerTenPullWithFatesAndPrimosAction = createAction<{pity: number, fates: number, primos: number}>('CHARACTER_TEN_PULL_WITH_FATES_AND_PRIMOS');
-export const characterBannerTenPullWithFatesAction = createAction<{pity: number, fates: number}>('CHARACTER_TEN_PULL_WITH_FATES');
-export const characterBannerTenPullWithPrimosAction = createAction<{pity: number, primos: number}>('CHARACTER_TEN_PULL_WITH_PRIMOS');
-export const characterBannerPullWithFatesAction = createAction<{pity: number, fates: number}>('CHARACTER_PULL_WITH_FATES');
-export const characterBannerPullWithPrimosAction = createAction<{pity: number, primos: number}>('CHARACTER_PULL_WITH_PRIMOS');
 
-export const weaponBannerTenPullWithFatesAndPrimosAction = createAction<{pity: number, fates: number, primos: number}>('WEAPON_TEN_PULL_WITH_FATES_AND_PRIMOS');
-export const weaponBannerTenPullWithFatesAction = createAction<{pity: number, fates: number}>('WEAPON_TEN_PULL_WITH_FATES');
-export const weaponBannerTenPullWithPrimosAction = createAction<{pity: number, primos: number}>('WEAPON_TEN_PULL_WITH_PRIMOS');
-export const weaponBannerPullWithFatesAction = createAction<{pity: number, fates: number}>('WEAPON_PULL_WITH_FATES');
-export const weaponBannerPullWithPrimosAction = createAction<{pity: number, primos: number}>('WEAPON_PULL_WITH_PRIMOS');
-
-export const standardBannerTenPullWithFatesAndPrimosAction = createAction<{pity: number, fates: number, primos: number}>('STANDARD_TEN_PULL_WITH_FATES_AND_PRIMOS');
-export const standardBannerTenPullWithFatesAction = createAction<{pity: number, fates: number}>('STANDARD_TEN_PULL_WITH_FATES');
-export const standardBannerTenPullWithPrimosAction = createAction<{pity: number, primos: number}>('STANDARD_TEN_PULL_WITH_PRIMOS');
-export const standardBannerPullWithFatesAction = createAction<{pity: number, fates: number}>('STANDARD_PULL_WITH_FATES');
-export const standardBannerPullWithPrimosAction = createAction<{pity: number, primos: number}>('STANDARD_PULL_WITH_PRIMOS');
 
 const bannerSlice = createSlice({
     name: 'banner',

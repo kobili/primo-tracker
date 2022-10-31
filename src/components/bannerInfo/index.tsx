@@ -10,6 +10,9 @@ import {
     setCharacterBannerPity,
     setWeaponBannerPity,
     setStandardBannerPity,
+} from '../../store/slices/bannerDataSlice';
+
+import {
     characterBannerTenPullWithFatesAndPrimosAction,
     characterBannerTenPullWithFatesAction,
     characterBannerTenPullWithPrimosAction,
@@ -24,8 +27,8 @@ import {
     standardBannerTenPullWithFatesAction,
     standardBannerTenPullWithPrimosAction,
     standardBannerPullWithFatesAction,
-    standardBannerPullWithPrimosAction,
-} from '../../store/slices/bannerDataSlice';
+    standardBannerPullWithPrimosAction
+} from '../../store/actions/PullActions';
 
 const FlexColumn = styled.div`
     display: flex;
