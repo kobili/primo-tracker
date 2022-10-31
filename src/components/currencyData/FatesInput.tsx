@@ -1,4 +1,4 @@
-import { InputContainer, InputField, Image, Input, Button } from './SharedComponents';
+import { InputContainer, InputField, Image, Input, Button } from '../SharedComponents';
 
 export interface FatesInputProps {
     icon: string;
