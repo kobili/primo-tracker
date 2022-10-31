@@ -1,4 +1,4 @@
-import { BannerType } from '../bannerData/BannerEnums';
+import { BannerType } from '../BannerEnums';
 import { BannerInfo } from './BannerInfo';
 import styled from 'styled-components';
 import { 

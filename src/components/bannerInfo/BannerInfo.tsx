@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BannerType } from '../bannerData/BannerEnums';
+import { BannerType } from '../BannerEnums';
 import { Button } from '../SharedComponents';
 import type { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
