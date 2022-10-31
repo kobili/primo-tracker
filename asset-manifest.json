@@ -1,13 +1,16 @@
 {
   "files": {
     "main.css": "/primo-tracker/static/css/main.9bd7a35e.css",
-    "main.js": "/primo-tracker/static/js/main.40617918.js",
+    "main.js": "/primo-tracker/static/js/main.ff7cdbbf.js",
+    "static/media/blue_fate.png": "/primo-tracker/static/media/blue_fate.92d785d77c4bab903687.png",
+    "static/media/pink_fate.png": "/primo-tracker/static/media/pink_fate.e5ea8482481a5c1107df.png",
+    "static/media/primogem.png": "/primo-tracker/static/media/primogem.852791dc455614ac9f59.png",
     "index.html": "/primo-tracker/index.html",
     "main.9bd7a35e.css.map": "/primo-tracker/static/css/main.9bd7a35e.css.map",
-    "main.40617918.js.map": "/primo-tracker/static/js/main.40617918.js.map"
+    "main.ff7cdbbf.js.map": "/primo-tracker/static/js/main.ff7cdbbf.js.map"
   },
   "entrypoints": [
     "static/css/main.9bd7a35e.css",
-    "static/js/main.40617918.js"
+    "static/js/main.ff7cdbbf.js"
   ]
 }
