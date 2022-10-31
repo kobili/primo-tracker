@@ -38,11 +38,15 @@ export const Button = styled.button`
     background-color: white;
     border-radius: 5px;
     height: ${INPUT_AND_BUTTON_HEIGHT};
-    &:hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover:not(:disabled) {
         color: white;
         background-color: #0d6efd;
         cursor: pointer;
     }
-    display: flex;
-    justify-content: center;
-    align-items: center;`;
+    &:disabled {
+        color: rgba(13, 110, 253, 0.5);
+        border-color: rgba(13, 110, 253, 0.5);
+    }`;
