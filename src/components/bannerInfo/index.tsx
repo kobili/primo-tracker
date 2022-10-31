@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import { 
     selectIntertwinedFates,
     selectAcquaintFates,
-    selectCharacterBannerPulls,
-    selectWeaponBannerPulls,
-    selectStandardBannerPulls,      // TODO: Rename pulls to pity
+    selectCharacterBannerPity,
+    selectWeaponBannerPity,
+    selectStandardBannerPity,      // TODO: Rename pulls to pity
     setIntertwinedFates,
     setAcquaintFates,
-    setCharacterBannerPulls,
-    setWeaponBannerPulls,
-    setStandardBannerPulls
+    setCharacterBannerPity,
+    setWeaponBannerPity,
+    setStandardBannerPity
   } from '../../store/slices/bannerDataSlice';
 
 const FlexColumn = styled.div`
@@ -24,22 +24,22 @@ const BannerInfoPanel = () => {
         <FlexColumn>
             <BannerInfo 
                 type={BannerType.STANDARD}
-                pitySelector={selectStandardBannerPulls}
-                pitySetter={setStandardBannerPulls}
+                pitySelector={selectStandardBannerPity}
+                pitySetter={setStandardBannerPity}
                 fatesSelector={selectAcquaintFates}
                 fatesSetter={setAcquaintFates}
             ></BannerInfo>
             <BannerInfo 
                 type={BannerType.CHARACTER} 
-                pitySelector={selectCharacterBannerPulls} 
-                pitySetter={setCharacterBannerPulls}
+                pitySelector={selectCharacterBannerPity} 
+                pitySetter={setCharacterBannerPity}
                 fatesSelector={selectIntertwinedFates}
                 fatesSetter={setIntertwinedFates}
             ></BannerInfo>
             <BannerInfo 
                 type={BannerType.WEAPON}
-                pitySelector={selectWeaponBannerPulls}
-                pitySetter={setWeaponBannerPulls}
+                pitySelector={selectWeaponBannerPity}
+                pitySetter={setWeaponBannerPity}
                 fatesSelector={selectIntertwinedFates}
                 fatesSetter={setIntertwinedFates}
             ></BannerInfo>

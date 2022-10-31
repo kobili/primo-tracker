@@ -6,9 +6,9 @@ const initialState = {
     primogems: 0,
     intertwinedFates: 0,
     acquaintFates: 0,
-    characterBannerPulls: 0,
-    weaponBannerPulls: 0,
-    standardBannerPulls: 0
+    characterBannerPity: 0,
+    weaponBannerPity: 0,
+    standardBannerPity: 0
 };
 
 const bannerSlice = createSlice({
@@ -24,14 +24,14 @@ const bannerSlice = createSlice({
         setAcquaintFates: (state, action: PayloadAction<number>) => {
             state.acquaintFates = action.payload > 0 ? action.payload : 0;
         },
-        setCharacterBannerPulls: (state, action: PayloadAction<number>) => {
-            state.characterBannerPulls = action.payload > 0 ? action.payload : 0;
+        setCharacterBannerPity: (state, action: PayloadAction<number>) => {
+            state.characterBannerPity = action.payload > 0 ? action.payload : 0;
         },
-        setWeaponBannerPulls: (state, action: PayloadAction<number>) => {
-            state.weaponBannerPulls = action.payload > 0 ? action.payload : 0;
+        setWeaponBannerPity: (state, action: PayloadAction<number>) => {
+            state.weaponBannerPity = action.payload > 0 ? action.payload : 0;
         },
-        setStandardBannerPulls: (state, action: PayloadAction<number>) => {
-            state.standardBannerPulls = action.payload > 0 ? action.payload : 0;
+        setStandardBannerPity: (state, action: PayloadAction<number>) => {
+            state.standardBannerPity = action.payload > 0 ? action.payload : 0;
         }
     }
 });
@@ -40,9 +40,9 @@ export const {
     setPrimogems,
     setIntertwinedFates,
     setAcquaintFates,
-    setCharacterBannerPulls,
-    setWeaponBannerPulls,
-    setStandardBannerPulls
+    setCharacterBannerPity,
+    setWeaponBannerPity,
+    setStandardBannerPity
 } = bannerSlice.actions;
 
 export default bannerSlice.reducer;
@@ -51,6 +51,6 @@ export default bannerSlice.reducer;
 export const selectPrimogems = (state: RootState) => state.bannerData.primogems;
 export const selectIntertwinedFates = (state: RootState) => state.bannerData.intertwinedFates;
 export const selectAcquaintFates = (state: RootState) => state.bannerData.acquaintFates;
-export const selectCharacterBannerPulls = (state: RootState) => state.bannerData.characterBannerPulls;
-export const selectWeaponBannerPulls = (state: RootState) => state.bannerData.weaponBannerPulls;
-export const selectStandardBannerPulls = (state: RootState) => state.bannerData.standardBannerPulls;
+export const selectCharacterBannerPity = (state: RootState) => state.bannerData.characterBannerPity;
+export const selectWeaponBannerPity = (state: RootState) => state.bannerData.weaponBannerPity;
+export const selectStandardBannerPity = (state: RootState) => state.bannerData.standardBannerPity;
