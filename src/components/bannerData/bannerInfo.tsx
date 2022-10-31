@@ -68,13 +68,11 @@ function BannerInfo(props: BannerInfoProps) {
   // event handlers for the single and ten pull buttons
   const doSinglePull = () => {
     if (fates >= 1) {
-
       dispatch(fateSetter(fates - 1));
-      dispatch(pullSetter(prevPulls + 1));
     } else if (primos >= 160) {
       dispatch(setPrimogems(primos - 160));
-      dispatch(pullSetter(prevPulls + 1));
     }
+    dispatch(pullSetter(prevPulls + 1))
   }
 
   const doTenPull = () => {
@@ -96,9 +94,7 @@ function BannerInfo(props: BannerInfoProps) {
 
   // determine if single or ten pulls are possible
   const updateCanDoSinglePull = () => {
-    if (fates >= 1) {
-      setCanDoSinglePull(true);
-    } else if (primos >= 160) {
+    if (fates >= 1 || primos >= 160) {
       setCanDoSinglePull(true);
     } else {
       setCanDoSinglePull(false);
