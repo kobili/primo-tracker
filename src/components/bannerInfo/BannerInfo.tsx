@@ -6,7 +6,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import { 
   selectPrimogems,
-  setPrimogems
+  setPrimogems,
+  characterBannerTenPullWithFatesAndPrimosAction,
+  characterBannerTenPullWithFatesAction,
+  characterBannerTenPullWithPrimosAction,
+  characterBannerPullWithFatesAction,
+  characterBannerPullWithPrimosAction,
+  weaponBannerTenPullWithFatesAndPrimosAction,
+  weaponBannerTenPullWithFatesAction,
+  weaponBannerTenPullWithPrimosAction,
+  weaponBannerPullWithFatesAction,
+  weaponBannerPullWithPrimosAction,
+  standardBannerTenPullWithFatesAndPrimosAction,
+  standardBannerTenPullWithFatesAction,
+  standardBannerTenPullWithPrimosAction,
+  standardBannerPullWithFatesAction,
+  standardBannerPullWithPrimosAction,
 } from '../../store/slices/bannerDataSlice';
 import { useEffect, useState } from 'react';
 
@@ -94,25 +109,95 @@ export const BannerInfo = (props: BannerInfoProps) => {
   // event handlers for the single and ten pull buttons
   const doSinglePull = () => {
     if (fates >= 1) {
-      dispatch(fatesSetter(fates - 1));
+      const payload = {
+        pity: pity + 1,
+        fates: fates - 1
+      }
+      switch(type) {
+        case BannerType.CHARACTER:
+          dispatch(characterBannerPullWithFatesAction(payload));
+          break;
+        case BannerType.WEAPON:
+          dispatch(weaponBannerPullWithFatesAction(payload));
+          break;
+        case BannerType.STANDARD:
+          dispatch(standardBannerPullWithFatesAction(payload));
+          break;
+      }
     } else if (primos >= 160) {
-      dispatch(setPrimogems(primos - 160));
+      const payload = {
+        pity: pity + 1,
+        primos: primos - 1
+      }
+      switch(type) {
+        case BannerType.CHARACTER:
+          dispatch(characterBannerPullWithPrimosAction(payload));
+          break;
+        case BannerType.WEAPON:
+          dispatch(weaponBannerPullWithPrimosAction(payload));
+          break;
+        case BannerType.STANDARD:
+          dispatch(standardBannerPullWithPrimosAction(payload));
+          break;
+      }
     }
-    dispatch(pitySetter(pity + 1))
   }
 
   const doTenPull = () => {
-    dispatch(pitySetter(pity + 10));
     if (fates >= 10) {
-      dispatch(fatesSetter(fates - 10));
+      const payload = {
+        pity: pity + 10,
+        fates: fates - 10
+      };
+      switch(type) {
+        case BannerType.CHARACTER:
+          dispatch(characterBannerTenPullWithFatesAction(payload));
+          break;
+        case BannerType.WEAPON:
+          dispatch(weaponBannerTenPullWithFatesAction(payload));
+          break;
+        case BannerType.STANDARD:
+          dispatch(standardBannerPullWithFatesAction(payload));
+          break;
+      }
+      
     } else if (fates > 0) {
       let primosToMakeDifference = 1600 - (fates * 160);
       if (primos >= primosToMakeDifference) {
-        dispatch(fatesSetter(0));
-        dispatch(setPrimogems(primos - primosToMakeDifference));
+        const payload = {
+          pity: pity + 10,
+          fates: 0,
+          primos: primos - primosToMakeDifference
+        }
+        switch(type) {
+          case BannerType.CHARACTER:
+            dispatch(characterBannerTenPullWithFatesAndPrimosAction(payload));
+            break;
+          case BannerType.WEAPON:
+            dispatch(weaponBannerTenPullWithFatesAndPrimosAction(payload));
+            break;
+          case BannerType.STANDARD:
+            dispatch(standardBannerTenPullWithFatesAndPrimosAction(payload));
+            break;
+        }
       }
     } else if (primos >= 1600) {
-      dispatch(setPrimogems(primos - 1600));
+      const payload = {
+        pity: pity + 10,
+        primos: primos - 1600
+      };
+
+      switch(type) {
+        case BannerType.CHARACTER:
+          dispatch(characterBannerTenPullWithPrimosAction(payload));
+          break;
+        case BannerType.WEAPON:
+          dispatch(weaponBannerTenPullWithPrimosAction(payload));
+          break;
+        case BannerType.STANDARD:
+          dispatch(standardBannerTenPullWithPrimosAction(payload));
+          break;
+      }
     }
   }
 
