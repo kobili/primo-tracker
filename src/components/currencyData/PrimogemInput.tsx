@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import primogemIcon from '../icons/primogem.png';
-import { InputContainer, InputField, Image, Input, Button } from './StyledComponents';
+import primogemIcon from '../../icons/primogem.png';
+import { InputContainer, InputField, Image, Input, Button } from './SharedComponents';
 
 const ButtonGroup = styled.div`
     display: flex;

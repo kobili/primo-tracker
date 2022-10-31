@@ -1,9 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BannerPages from './components/bannerData';
-import { FatesInput } from './components/FatesInput';
-import { PrimogemInput } from './components/PrimogemInput';
-import pinkFate from './icons/pink_fate.png';
-import blueFate from './icons/blue_fate.png';
+import CurrencyDataInputPanel from './components/currencyData';
 import styled from 'styled-components';
 
 const ColumnFlex = styled.div`
@@ -14,12 +11,7 @@ const ColumnFlex = styled.div`
 function App() {
   return (
     // <BannerPages />
-    <>
-      <PrimogemInput></PrimogemInput>
-      <FatesInput icon={blueFate}></FatesInput>
-      <FatesInput icon={pinkFate}></FatesInput>
-    </>
-    
+    <CurrencyDataInputPanel></CurrencyDataInputPanel>
   );
 }
 

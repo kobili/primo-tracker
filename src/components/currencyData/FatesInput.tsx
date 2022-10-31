@@ -1,8 +1,4 @@
-import styled from 'styled-components';
-import pinkFate from '../icons/pink_fate.png';
-import { InputContainer, InputField, Image, Input, Button } from './StyledComponents';
-
-
+import { InputContainer, InputField, Image, Input, Button } from './SharedComponents';
 
 export interface FatesInputProps {
     icon: string;
