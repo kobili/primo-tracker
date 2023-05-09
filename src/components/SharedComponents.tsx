@@ -7,6 +7,10 @@ interface DivProps  {
     children: ReactNode[];
 }
 
+interface ImageProps {
+    src: string;
+}
+
 export const InputContainer = ({children}: DivProps) => {
     return (
         <div className='flex items-center gap-2 w-full mb-5'>
@@ -23,20 +27,11 @@ export const InputField = ({children}: DivProps) => {
     )
 }
 
-interface ImageProps {
-    src: string;
+export const Image = ({src}: ImageProps) => {
+    return (
+        <img className='h-10 w-auto, ml-12' src={src} />
+    )
 }
-
-export const Image = styled.img`
-    height: 38px;
-    width: auto;
-    margin-right: -50;`;
-
-// export const Image = ({src}: ImageProps) => {
-//     return (
-//         <img className='h-9 w-auto, -mr-12' src={src} />
-//     )
-// }
 
 export const Input = styled.input`
     max-width: 500px;
