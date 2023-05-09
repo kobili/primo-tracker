@@ -21,6 +21,7 @@ interface InputProps {
 interface ButtonProps {
     onClick: () => any;
     disabled?: boolean;
+    style?: any;
     children: ReactNode | ReactNode[];
 }
 
@@ -60,35 +61,17 @@ export const Input = (props: InputProps) => {
     )
 }
 
-// export const Button = styled.button`
-//     padding: 6px;
-//     border: 2px #0d6efd solid;
-//     color: #0d6efd;
-//     background-color: white;
-//     border-radius: 5px;
-//     height: ${INPUT_AND_BUTTON_HEIGHT};
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     &:hover:not(:disabled) {
-//         color: white;
-//         background-color: #0d6efd;
-//         cursor: pointer;
-//     }
-//     &:disabled {
-//         color: rgba(13, 110, 253, 0.5);
-//         border-color: rgba(13, 110, 253, 0.5);
-//     }`;
-
+// TODO: make sure hover effects don't apply when disabled
 export const Button = (props: ButtonProps) => {
-    const {onClick, disabled, children} = props;
+    const {onClick, disabled, style, children} = props;
     return (
         <button
-            className='p-2 border-2 border-solid border-[#0d6efd] rounded-md text-[#0d6efd] bg-white h-9 flex justify-center items-center
+            className='p-2 border-2 border-solid border-[#0d6efd] rounded-md text-[#0d6efd] bg-[#ffffff] h-9 flex justify-center items-center
                         hover:text-white hover:bg-[#0d6efd] hover:cursor-pointer 
                         disabled:text-[#0d6efd80] disabled:border-[#0d6efd80] disabled:cursor-default'
             onClick={onClick}
             disabled={disabled}
+            style={style}
         >
             {children}
         </button>
