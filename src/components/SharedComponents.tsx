@@ -11,6 +11,13 @@ interface ImageProps {
     src: string;
 }
 
+interface InputProps {
+    type: string;
+    min: number;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => any;
+    value: string | number;
+}
+
 export const InputContainer = ({children}: DivProps) => {
     return (
         <div className='flex items-center gap-2 w-full mb-5'>
@@ -33,17 +40,19 @@ export const Image = ({src}: ImageProps) => {
     )
 }
 
-export const Input = styled.input`
-    max-width: 500px;
-    padding: 7px;
-    height: ${INPUT_AND_BUTTON_HEIGHT};
-    font-size: 1rem;
-    font-weight: 500;
-    
-    flex: 1;
+export const Input = (props: InputProps) => {
+    const {type, min, onChange, value} = props;
 
-    border: 1px solid #ced4da;
-    border-radius: 0.375rem;`;
+    return (
+        <input 
+            className='max-w-lg p-2 h-9 text-base font-medium flex-1 border border-solid border-gray-900 rounded-md'
+            type={type}
+            min={min}
+            onChange={onChange}
+            value={value}
+        />
+    )
+}
 
 export const Button = styled.button`
     padding: 6px;
