@@ -4,7 +4,7 @@ import primogemIcon from '../../icons/primogem.png';
 import { InputContainer, InputField, Image, Input, Button } from '../SharedComponents';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { selectPrimogems, setPrimogems } from '../../store/slices/bannerDataSlice';
+import { selectPrimogems, setPrimogems } from '../../store/slices/genshinBannerDataSlice';
 
 const ButtonGroup = styled.div`
     display: flex;

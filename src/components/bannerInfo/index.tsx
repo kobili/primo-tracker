@@ -10,7 +10,7 @@ import {
     setCharacterBannerPity,
     setWeaponBannerPity,
     setStandardBannerPity,
-} from '../../store/slices/bannerDataSlice';
+} from '../../store/slices/genshinBannerDataSlice';
 
 import { bannerPull } from '../../store/actions/PullActions';
 

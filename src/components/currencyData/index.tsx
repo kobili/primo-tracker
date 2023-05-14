@@ -10,7 +10,7 @@ import {
     selectIntertwinedFates,
     setIntertwinedFates,
     setAcquaintFates,
-} from '../../store/slices/bannerDataSlice';
+} from '../../store/slices/genshinBannerDataSlice';
 
 const ColumnFlex = styled.div`
     display: flex;

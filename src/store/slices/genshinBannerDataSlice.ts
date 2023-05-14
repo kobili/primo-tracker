@@ -14,7 +14,6 @@ const initialState = {
 };
 
 
-
 const bannerSlice = createSlice({
     name: 'banner',
     initialState,

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import bannerDataReducer from './slices/bannerDataSlice';
+import genshinBannerDataReducer from './slices/genshinBannerDataSlice';
 import { persistToLocalStorage, loadFromLocalStorage } from '../localStorage';
 import throttle from 'lodash/throttle';
 
@@ -7,7 +7,7 @@ const existingState = loadFromLocalStorage();
 
 export const store = configureStore({
     reducer: {
-        genshin: bannerDataReducer
+        genshin: genshinBannerDataReducer,
     },
     preloadedState: existingState
 });

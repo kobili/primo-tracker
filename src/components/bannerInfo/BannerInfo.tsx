@@ -4,7 +4,7 @@ import { Button } from '../SharedComponents';
 import type { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { selectPrimogems } from '../../store/slices/bannerDataSlice';
+import { selectPrimogems } from '../../store/slices/genshinBannerDataSlice';
 import { useEffect, useState } from 'react';
 
 const ColumnFlex = styled.div`
