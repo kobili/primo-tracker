@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Screen } from './components/screens/hoyoGameScreen';
+import { Games } from './enums/Games';
 
 function App() {
   return (
-    <Screen />
+    <Screen game={Games.GENSHIN} />
   );
 }
 

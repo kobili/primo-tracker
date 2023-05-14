@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import CurrencyDataInputPanel from '../currencyData';
 import BannerInfoPanel from '../bannerInfo';
 import Eulamber from '../../images/Eulamber.jpeg';
+import { Games } from '../../enums/Games';
 
 const RowFlex = styled.div`
     padding: 50px;
@@ -15,11 +16,15 @@ const RowFlex = styled.div`
     background-repeat: no-repeat;
     background-position: bottom right`;
 
-export const Screen = () => {
+interface ScreenProps {
+    game: Games;
+}
+
+export const Screen = ({ game }: ScreenProps) => {
     return (
         <RowFlex>
-            <BannerInfoPanel></BannerInfoPanel>
-            <CurrencyDataInputPanel></CurrencyDataInputPanel>
+            <BannerInfoPanel game={game}></BannerInfoPanel>
+            <CurrencyDataInputPanel game={game}></CurrencyDataInputPanel>
         </RowFlex>
     );
 }

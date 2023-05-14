@@ -11,12 +11,17 @@ import {
     setIntertwinedFates,
     setAcquaintFates,
 } from '../../store/slices/genshinBannerDataSlice';
+import { Games } from "../../enums/Games";
 
 const ColumnFlex = styled.div`
     display: flex;
     flex-direction: column;`
 
-const CurrencyDataInputPanel = () => {
+interface Props {
+    game: Games;
+}
+
+const CurrencyDataInputPanel = ({ game }: Props) => {
     return (
         <ColumnFlex>
             <PrimogemInput></PrimogemInput>

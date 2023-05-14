@@ -13,13 +13,18 @@ import {
 } from '../../store/slices/genshinBannerDataSlice';
 
 import { bannerPull } from '../../store/actions/PullActions';
+import { Games } from '../../enums/Games';
 
 const FlexColumn = styled.div`
     display: flex;
     flex-direction: column;
     gap: 50px;`
 
-const BannerInfoPanel = () => {
+interface BannerInfoPanelProps {
+    game: Games;
+}
+
+const BannerInfoPanel = ({game}: BannerInfoPanelProps) => {
     return (
         <FlexColumn>
             <BannerInfo
