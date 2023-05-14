@@ -12,7 +12,7 @@ import {
     setStandardBannerPity,
 } from '../../store/slices/genshinBannerDataSlice';
 
-import { bannerPull } from '../../store/actions/PullActions';
+import { bannerPull } from '../../store/actions/GenshinActions';
 
 const FlexColumn = styled.div`
     display: flex;

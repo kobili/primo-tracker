@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { bannerPull } from '../actions/PullActions';
+import { bannerPull } from '../actions/GenshinActions';
 import { BannerType } from '../../enums/BannerEnums';
 
 const initialState = {
