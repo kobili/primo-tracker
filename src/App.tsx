@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Screen } from './components/screens/hoyoGameScreen';
-import { GameTypes } from './enums/Games';
+import { GENSHIN_GAME_INFO, STAR_RAIL_GAME_INFO } from './GameInfo';
 
 function App() {
   return (
-    <Screen game={GameTypes.GENSHIN} />
+    <Screen gameInfo={GENSHIN_GAME_INFO} />
   );
 }
 

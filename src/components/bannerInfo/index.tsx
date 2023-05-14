@@ -1,19 +1,7 @@
-import { BannerType } from '../../enums/BannerEnums';
 import { BannerInfo } from './BannerInfo';
 import styled from 'styled-components';
-import {
-    selectIntertwinedFates,
-    selectAcquaintFates,
-    selectCharacterBannerPity as selectGenshinCharacterPity,
-    selectWeaponBannerPity as selectGenshinWeaponPity,
-    selectStandardBannerPity as selectGenshinStandardPity,
-    setCharacterBannerPity as setGenshinCharacterPity,
-    setWeaponBannerPity as setGenshinWeaponPity,
-    setStandardBannerPity as setGenshinStandardPity,
-} from '../../store/slices/genshinBannerDataSlice';
-
 import { bannerPull } from '../../store/actions/PullActions';
-import { GameTypes } from '../../enums/Games';
+import { GameInfo } from '../../GameInfo';
 
 const FlexColumn = styled.div`
     display: flex;
@@ -21,33 +9,24 @@ const FlexColumn = styled.div`
     gap: 50px;`
 
 interface BannerInfoPanelProps {
-    game: GameTypes;
+    gameInfo: GameInfo;
 }
 
-const BannerInfoPanel = ({game}: BannerInfoPanelProps) => {
+const BannerInfoPanel = ({ gameInfo }: BannerInfoPanelProps) => {
     return (
         <FlexColumn>
-            <BannerInfo
-                bannerType={BannerType.STANDARD}
-                pitySelector={selectGenshinStandardPity}
-                pitySetter={setGenshinStandardPity}
-                fatesSelector={selectAcquaintFates}
-                bannerPullAction={bannerPull}
-            ></BannerInfo>
-            <BannerInfo
-                bannerType={BannerType.CHARACTER}
-                pitySelector={selectGenshinCharacterPity}
-                pitySetter={setGenshinCharacterPity}
-                fatesSelector={selectIntertwinedFates}
-                bannerPullAction={bannerPull}
-            ></BannerInfo>
-            <BannerInfo
-                bannerType={BannerType.WEAPON}
-                pitySelector={selectGenshinWeaponPity}
-                pitySetter={setGenshinWeaponPity}
-                fatesSelector={selectIntertwinedFates}
-                bannerPullAction={bannerPull}
-            ></BannerInfo>
+            {gameInfo.banners.map(banner => {
+                return (
+                    <BannerInfo
+                        key={`${gameInfo.gameType}__${banner.bannerType}`}
+                        bannerType={banner.bannerType}
+                        pitySelector={banner.pitySelector}
+                        pitySetter={banner.pitySetter}
+                        fatesSelector={banner.fatesSelector}
+                        bannerPullAction={bannerPull}
+                    />
+                )
+            })}
         </FlexColumn>
     )
 }
