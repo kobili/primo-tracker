@@ -1,24 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import {
-    characterBannerTenPullWithFatesAndPrimosAction,
-    characterBannerTenPullWithFatesAction,
-    characterBannerTenPullWithPrimosAction,
-    characterBannerPullWithFatesAction,
-    characterBannerPullWithPrimosAction,
-    weaponBannerTenPullWithFatesAndPrimosAction,
-    weaponBannerTenPullWithFatesAction,
-    weaponBannerTenPullWithPrimosAction,
-    weaponBannerPullWithFatesAction,
-    weaponBannerPullWithPrimosAction,
-    standardBannerTenPullWithFatesAndPrimosAction,
-    standardBannerTenPullWithFatesAction,
-    standardBannerTenPullWithPrimosAction,
-    standardBannerPullWithFatesAction,
-    standardBannerPullWithPrimosAction,
-    bannerPull
-} from '../actions/PullActions';
+import { bannerPull } from '../actions/PullActions';
 import { BannerType } from '../../enums/BannerEnums';
 
 const initialState = {
@@ -58,7 +41,7 @@ const bannerSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(bannerPull, (state, action) => {
-                const {bannerType, pity, fates, primos} = action.payload;
+                const { bannerType, pity, fates, primos } = action.payload;
                 switch (bannerType) {
                     case BannerType.STANDARD:
                         state.standardBannerPity = pity;
@@ -70,93 +53,15 @@ const bannerSlice = createSlice({
                         break;
                     case BannerType.WEAPON:
                         state.weaponBannerPity = pity;
-                        state.intertwinedFates = pity;
+                        state.intertwinedFates = fates;
                         break;
                 }
-                state.primogems = primos;
-            })
-            .addCase(characterBannerTenPullWithFatesAndPrimosAction, (state, action) => {
-                const {pity, fates, primos} = action.payload;
-                state.characterBannerPity = pity;
-                state.intertwinedFates = fates;
-                state.primogems = primos;
-            })
-            .addCase(characterBannerTenPullWithFatesAction, (state, action) => {
-                const {pity, fates} = action.payload;
-                state.characterBannerPity = pity;
-                state.intertwinedFates = fates;
-            })
-            .addCase(characterBannerTenPullWithPrimosAction, (state, action) => {
-                const { pity, primos } = action.payload;
-                state.characterBannerPity = pity;
-                state.primogems = primos;
-            })
-            .addCase(characterBannerPullWithFatesAction, (state, action) => {
-                const { pity, fates } = action.payload;
-                state.characterBannerPity = pity;
-                state.intertwinedFates = fates;
-            })
-            .addCase(characterBannerPullWithPrimosAction, (state, action) => {
-                const { pity, primos } = action.payload;
-                state.characterBannerPity = pity;
-                state.primogems = primos;
-            })
-            .addCase(weaponBannerTenPullWithFatesAndPrimosAction, (state, action) => {
-                const {pity, fates, primos} = action.payload;
-                state.weaponBannerPity = pity;
-                state.intertwinedFates = fates;
-                state.primogems = primos;
-            })
-            .addCase(weaponBannerTenPullWithFatesAction, (state, action) => {
-                const { pity, fates } = action.payload;
-                state.weaponBannerPity = pity;
-                state.intertwinedFates = fates;
-            })
-            .addCase(weaponBannerTenPullWithPrimosAction, (state, action) => {
-                const { pity, primos } = action.payload;
-                state.weaponBannerPity = pity;
-                state.primogems = primos;
-            })
-            .addCase(weaponBannerPullWithFatesAction, (state, action) => {
-                const { pity, fates } = action.payload;
-                state.weaponBannerPity = pity;
-                state.intertwinedFates = fates;
-            })
-            .addCase(weaponBannerPullWithPrimosAction, (state, action) => {
-                const { pity, primos } = action.payload;
-                state.weaponBannerPity = pity;
-                state.primogems = primos;
-            })
-            .addCase(standardBannerTenPullWithFatesAndPrimosAction, (state, action) => {
-                const {pity, fates, primos} = action.payload;
-                state.standardBannerPity = pity;
-                state.acquaintFates = fates;
-                state.primogems = primos;
-            })
-            .addCase(standardBannerTenPullWithFatesAction, (state, action) => {
-                const { pity, fates } = action.payload;
-                state.standardBannerPity = pity;
-                state.acquaintFates = fates;
-            })
-            .addCase(standardBannerTenPullWithPrimosAction, (state, action) => {
-                const { pity, primos } = action.payload;
-                state.standardBannerPity = pity;
-                state.primogems = primos;
-            })
-            .addCase(standardBannerPullWithFatesAction, (state, action) => {
-                const { pity, fates } = action.payload;
-                state.standardBannerPity = pity;
-                state.acquaintFates = fates;
-            })
-            .addCase(standardBannerPullWithPrimosAction, (state, action) => {
-                const { pity, primos } = action.payload;
-                state.standardBannerPity = pity;
                 state.primogems = primos;
             })
     },
 });
 
-export const { 
+export const {
     setPrimogems,
     setIntertwinedFates,
     setAcquaintFates,

@@ -12,23 +12,7 @@ import {
     setStandardBannerPity,
 } from '../../store/slices/bannerDataSlice';
 
-import {
-    characterBannerTenPullWithFatesAndPrimosAction,
-    characterBannerTenPullWithFatesAction,
-    characterBannerTenPullWithPrimosAction,
-    characterBannerPullWithFatesAction,
-    characterBannerPullWithPrimosAction,
-    weaponBannerTenPullWithFatesAndPrimosAction,
-    weaponBannerTenPullWithFatesAction,
-    weaponBannerTenPullWithPrimosAction,
-    weaponBannerPullWithFatesAction,
-    weaponBannerPullWithPrimosAction,
-    standardBannerTenPullWithFatesAndPrimosAction,
-    standardBannerTenPullWithFatesAction,
-    standardBannerTenPullWithPrimosAction,
-    standardBannerPullWithFatesAction,
-    standardBannerPullWithPrimosAction
-} from '../../store/actions/PullActions';
+import { bannerPull } from '../../store/actions/PullActions';
 
 const FlexColumn = styled.div`
     display: flex;
@@ -39,37 +23,25 @@ const BannerInfoPanel = () => {
     return (
         <FlexColumn>
             <BannerInfo
-                type={BannerType.STANDARD}
+                bannerType={BannerType.STANDARD}
                 pitySelector={selectStandardBannerPity}
                 pitySetter={setStandardBannerPity}
                 fatesSelector={selectAcquaintFates}
-                bannerTenPullWithFatesAndPrimosAction={standardBannerTenPullWithFatesAndPrimosAction}
-                bannerTenPullWithFatesAction={standardBannerTenPullWithFatesAction}
-                bannerTenPullWithPrimosAction={standardBannerTenPullWithPrimosAction}
-                bannerPullWithFatesAction={standardBannerPullWithFatesAction}
-                bannerPullWithPrimosAction={standardBannerPullWithPrimosAction}
+                bannerPullAction={bannerPull}
             ></BannerInfo>
             <BannerInfo
-                type={BannerType.CHARACTER}
+                bannerType={BannerType.CHARACTER}
                 pitySelector={selectCharacterBannerPity}
                 pitySetter={setCharacterBannerPity}
                 fatesSelector={selectIntertwinedFates}
-                bannerTenPullWithFatesAndPrimosAction={characterBannerTenPullWithFatesAndPrimosAction}
-                bannerTenPullWithFatesAction={characterBannerTenPullWithFatesAction}
-                bannerTenPullWithPrimosAction={characterBannerTenPullWithPrimosAction}
-                bannerPullWithFatesAction={characterBannerPullWithFatesAction}
-                bannerPullWithPrimosAction={characterBannerPullWithPrimosAction}
+                bannerPullAction={bannerPull}
             ></BannerInfo>
             <BannerInfo
-                type={BannerType.WEAPON}
+                bannerType={BannerType.WEAPON}
                 pitySelector={selectWeaponBannerPity}
                 pitySetter={setWeaponBannerPity}
                 fatesSelector={selectIntertwinedFates}
-                bannerTenPullWithFatesAndPrimosAction={weaponBannerTenPullWithFatesAndPrimosAction}
-                bannerTenPullWithFatesAction={weaponBannerTenPullWithFatesAction}
-                bannerTenPullWithPrimosAction={weaponBannerTenPullWithPrimosAction}
-                bannerPullWithFatesAction={weaponBannerPullWithFatesAction}
-                bannerPullWithPrimosAction={weaponBannerPullWithPrimosAction}
+                bannerPullAction={bannerPull}
             ></BannerInfo>
         </FlexColumn>
     )
