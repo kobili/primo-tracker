@@ -7,7 +7,7 @@ const existingState = loadFromLocalStorage();
 
 export const store = configureStore({
     reducer: {
-        bannerData: bannerDataReducer
+        genshin: bannerDataReducer
     },
     preloadedState: existingState
 });

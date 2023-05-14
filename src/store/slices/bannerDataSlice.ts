@@ -148,9 +148,9 @@ export const {
 export default bannerSlice.reducer;
 
 // Selectors
-export const selectPrimogems = (state: RootState) => state.bannerData.primogems;
-export const selectIntertwinedFates = (state: RootState) => state.bannerData.intertwinedFates;
-export const selectAcquaintFates = (state: RootState) => state.bannerData.acquaintFates;
-export const selectCharacterBannerPity = (state: RootState) => state.bannerData.characterBannerPity;
-export const selectWeaponBannerPity = (state: RootState) => state.bannerData.weaponBannerPity;
-export const selectStandardBannerPity = (state: RootState) => state.bannerData.standardBannerPity;
+export const selectPrimogems = (state: RootState) => state.genshin.primogems;
+export const selectIntertwinedFates = (state: RootState) => state.genshin.intertwinedFates;
+export const selectAcquaintFates = (state: RootState) => state.genshin.acquaintFates;
+export const selectCharacterBannerPity = (state: RootState) => state.genshin.characterBannerPity;
+export const selectWeaponBannerPity = (state: RootState) => state.genshin.weaponBannerPity;
+export const selectStandardBannerPity = (state: RootState) => state.genshin.standardBannerPity;
