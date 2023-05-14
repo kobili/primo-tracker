@@ -1,4 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
+import { BannerType } from "../../enums/BannerEnums";
 
 const characterBannerTenPullWithFatesAndPrimosAction = createAction<{pity: number, fates: number, primos: number}>('CHARACTER_TEN_PULL_WITH_FATES_AND_PRIMOS');
 const characterBannerTenPullWithFatesAction = createAction<{pity: number, fates: number}>('CHARACTER_TEN_PULL_WITH_FATES');
@@ -18,6 +19,8 @@ const standardBannerTenPullWithPrimosAction = createAction<{pity: number, primos
 const standardBannerPullWithFatesAction = createAction<{pity: number, fates: number}>('STANDARD_PULL_WITH_FATES');
 const standardBannerPullWithPrimosAction = createAction<{pity: number, primos: number}>('STANDARD_PULL_WITH_PRIMOS');
 
+const bannerPull = createAction<{bannerType: BannerType, pity: number, fates: number, primos: number}>('BANNER_PULL');
+
 export {
     characterBannerTenPullWithFatesAndPrimosAction,
     characterBannerTenPullWithFatesAction,
@@ -33,5 +36,6 @@ export {
     standardBannerTenPullWithFatesAction,
     standardBannerTenPullWithPrimosAction,
     standardBannerPullWithFatesAction,
-    standardBannerPullWithPrimosAction
+    standardBannerPullWithPrimosAction,
+    bannerPull,
 };

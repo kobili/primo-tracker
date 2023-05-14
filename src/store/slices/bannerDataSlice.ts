@@ -16,8 +16,10 @@ import {
     standardBannerTenPullWithFatesAction,
     standardBannerTenPullWithPrimosAction,
     standardBannerPullWithFatesAction,
-    standardBannerPullWithPrimosAction
+    standardBannerPullWithPrimosAction,
+    bannerPull
 } from '../actions/PullActions';
+import { BannerType } from '../../enums/BannerEnums';
 
 const initialState = {
     primogems: 0,
@@ -55,6 +57,24 @@ const bannerSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(bannerPull, (state, action) => {
+                const {bannerType, pity, fates, primos} = action.payload;
+                switch (bannerType) {
+                    case BannerType.STANDARD:
+                        state.standardBannerPity = pity;
+                        state.acquaintFates = fates;
+                        break;
+                    case BannerType.CHARACTER:
+                        state.characterBannerPity = pity;
+                        state.intertwinedFates = fates;
+                        break;
+                    case BannerType.WEAPON:
+                        state.weaponBannerPity = pity;
+                        state.intertwinedFates = pity;
+                        break;
+                }
+                state.primogems = primos;
+            })
             .addCase(characterBannerTenPullWithFatesAndPrimosAction, (state, action) => {
                 const {pity, fates, primos} = action.payload;
                 state.characterBannerPity = pity;
