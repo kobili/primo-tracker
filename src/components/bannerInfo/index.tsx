@@ -24,7 +24,7 @@ const BannerInfoPanel = ({ gameInfo }: BannerInfoPanelProps) => {
                         pitySelector={banner.pitySelector}
                         pitySetter={banner.pitySetter}
                         fatesSelector={banner.fatesSelector}
-                        bannerPullAction={bannerPull}
+                        bannerPullAction={bannerPull(gameInfo.gameType)}
                         hardPity={banner.hardPity}
                         primosPerPull={gameInfo.primosPerPull}
                     />

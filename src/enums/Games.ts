@@ -1,4 +1,4 @@
 export enum GameTypes {
-    GENSHIN,
-    HONKAI_STAR_RAIL,
+    GENSHIN = "Genshin Impact",
+    HONKAI_STAR_RAIL = "Honkai Star Rail",
 }

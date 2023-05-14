@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import { bannerPull } from '../actions/PullActions';
 import { BannerType } from '../../enums/BannerEnums';
+import { GameTypes } from '../../enums/Games';
 
 const initialState = {
     jades: 0,
@@ -39,7 +40,7 @@ const bannerSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(bannerPull, (state, action) => {
+            .addCase(bannerPull(GameTypes.HONKAI_STAR_RAIL), (state, action) => {
                 const { bannerType, pity, fates, primos } = action.payload;
                 switch (bannerType) {
                     case BannerType.STANDARD:
