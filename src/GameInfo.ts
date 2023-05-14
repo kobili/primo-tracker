@@ -36,6 +36,10 @@ import intertwinedFateIcon from './icons/pink_fate.png';
 import primogemIcon from './icons/primogem.png';
 import eulaAmberImage from './images/Eulamber.jpeg';
 
+import jadeIcon from './icons/stellar_jade.png';
+import railPassIcon from './icons/rail_pass.png';
+import specialRailPassIcon from './icons/special_rail_pass.png';
+
 type ReduxNumberSelector = (state: RootState) => number;
 type ReduxNumberSetter = ActionCreatorWithPayload<number, string>;
 
@@ -140,9 +144,9 @@ export const STAR_RAIL_GAME_INFO: GameInfo = {
     pinkFatesSelector: selectSpecialRailPasses,
     pinkFatesSetter: setSpecialRailPasses,
     icons: {
-        primoIcon: primogemIcon,
-        fateIcon: acquaintFateIcon,
-        pinkFateIcon: intertwinedFateIcon,
+        primoIcon: jadeIcon,
+        fateIcon: railPassIcon,
+        pinkFateIcon: specialRailPassIcon,
         backgroundImage: eulaAmberImage,
     },
 }
