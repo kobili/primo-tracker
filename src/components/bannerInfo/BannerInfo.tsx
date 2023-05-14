@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { BannerType } from '../BannerEnums';
+import { BannerType } from '../../enums/BannerEnums';
 import { Button } from '../SharedComponents';
 import type { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { selectPrimogems } from '../../store/slices/bannerDataSlice';
 import { useEffect, useState } from 'react';
 
 const ColumnFlex = styled.div`
@@ -44,34 +43,38 @@ const Input = styled.input`
   border-radius: 0.375rem;`;
 
 export interface BannerInfoProps {
-  type: BannerType;
+  bannerType: BannerType;
+  primoSelector: (state: RootState) => number;
   pitySelector: (state: RootState) => number;
   pitySetter: ActionCreatorWithPayload<number, string>;
   fatesSelector: (state: RootState) => number;
-  bannerTenPullWithFatesAndPrimosAction: ActionCreatorWithPayload<{ pity: number, fates: number, primos: number }>;
-  bannerTenPullWithFatesAction: ActionCreatorWithPayload<{ pity: number, fates: number }>;
-  bannerTenPullWithPrimosAction: ActionCreatorWithPayload<{ pity: number, primos: number }>;
-  bannerPullWithFatesAction: ActionCreatorWithPayload<{ pity: number, fates: number }>;
-  bannerPullWithPrimosAction: ActionCreatorWithPayload<{ pity: number, primos: number }>;
+  bannerPullAction: ActionCreatorWithPayload<{
+    bannerType:
+    BannerType,
+    pity: number,
+    fates: number,
+    primos: number
+  }>;
+  hardPity: number;
+  primosPerPull: number;
 }
 
 export const BannerInfo = (props: BannerInfoProps) => {
   const {
-    type,
+    bannerType,
+    primoSelector,
     pitySelector,
     pitySetter,
     fatesSelector,
-    bannerTenPullWithFatesAndPrimosAction,
-    bannerTenPullWithFatesAction,
-    bannerTenPullWithPrimosAction,
-    bannerPullWithFatesAction,
-    bannerPullWithPrimosAction
+    bannerPullAction,
+    hardPity,
+    primosPerPull,
   } = props;
 
   const dispatch = useDispatch();
   const pity = useSelector(pitySelector);
   const fates = useSelector(fatesSelector);
-  const primos = useSelector(selectPrimogems);
+  const primos = useSelector(primoSelector);
 
   const [totalPulls, setTotalPulls] = useState(0);
   const [numberOfHardPities, setNumberOfHardPities] = useState(0);
@@ -86,15 +89,14 @@ export const BannerInfo = (props: BannerInfoProps) => {
   });
 
   const updateTotalPulls = (primos: number, fates: number, pity: number) => {
-    let pullsFromPrimos = primos / 160;
+    let pullsFromPrimos = primos / primosPerPull;
     let updatedTotalPulls = Math.floor(pullsFromPrimos + fates + pity);
     setTotalPulls(updatedTotalPulls);
 
-    let pullsRequiredForHardPity = type === BannerType.WEAPON ? 80 : 90;
-    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / pullsRequiredForHardPity);
+    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / hardPity);
     setNumberOfHardPities(updatedNumberOfHardPities);
 
-    let primosToNextPity = Math.ceil((pullsRequiredForHardPity - (updatedTotalPulls % pullsRequiredForHardPity)) * 160);
+    let primosToNextPity = Math.ceil((hardPity - (updatedTotalPulls % hardPity)) * 160);
     setPrimosToNextHardPity(primosToNextPity);
 
     // update whether or not single or ten pulls are possible
@@ -105,43 +107,56 @@ export const BannerInfo = (props: BannerInfoProps) => {
   // event handlers for the single and ten pull buttons
   const doSinglePull = () => {
     if (fates >= 1) {
+      // Pull with fate
       const payload = {
+        bannerType: bannerType,
         pity: pity + 1,
-        fates: fates - 1
+        fates: fates - 1,
+        primos: primos
       }
-      dispatch(bannerPullWithFatesAction(payload));
+      dispatch(bannerPullAction(payload));
     } else if (primos >= 160) {
+      // Pull with primos
       const payload = {
+        bannerType: bannerType,
         pity: pity + 1,
-        primos: primos - 160
+        fates: fates,
+        primos: primos - 160,
       }
-      dispatch(bannerPullWithPrimosAction(payload));
+      dispatch(bannerPullAction(payload));
     }
   }
 
   const doTenPull = () => {
     if (fates >= 10) {
+      // ten pull with only fates
       const payload = {
+        bannerType: bannerType,
         pity: pity + 10,
-        fates: fates - 10
+        fates: fates - 10,
+        primos: primos,
       };
-      dispatch(bannerTenPullWithFatesAction(payload));
+      dispatch(bannerPullAction(payload));
     } else if (fates > 0) {
+      // ten pull with fates and primos
       let primosToMakeDifference = 1600 - (fates * 160);
       if (primos >= primosToMakeDifference) {
         const payload = {
+          bannerType: bannerType,
           pity: pity + 10,
           fates: 0,
-          primos: primos - primosToMakeDifference
+          primos: primos - primosToMakeDifference,
         }
-        dispatch(bannerTenPullWithFatesAndPrimosAction(payload));
+        dispatch(bannerPullAction(payload));
       }
     } else if (primos >= 1600) {
       const payload = {
+        bannerType: bannerType,
         pity: pity + 10,
-        primos: primos - 1600
+        fates: fates,
+        primos: primos - 1600,
       };
-      dispatch(bannerTenPullWithPrimosAction(payload));
+      dispatch(bannerPullAction(payload));
     }
   }
 
@@ -172,7 +187,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
   return (
     <ColumnFlex>
       <Title>
-        {`${type} Banner`}
+        {`${bannerType} Banner`}
       </Title>
       <IndentedDiv>
         <RowFlex>
@@ -181,7 +196,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
           <Button disabled={!canDoSinglePull} onClick={doSinglePull}>1 pull</Button>
           <Button disabled={!canDoTenPull} onClick={doTenPull}>10 pull</Button>
         </RowFlex>
-        <TotalPulls>Total pulls on {type} Banner: {totalPulls}</TotalPulls>
+        <TotalPulls>Total pulls on {bannerType} Banner: {totalPulls}</TotalPulls>
         <Text>You can hit hard pity {numberOfHardPities} times</Text>
         <Text>You need <BlueText>{primosToNextHardPity}</BlueText> primos to reach your next hard pity</Text>
       </IndentedDiv>

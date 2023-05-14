@@ -1,27 +1,22 @@
 import { PrimogemInput } from "./PrimogemInput";
 import { FatesInput } from "./FatesInput";
-import blueFate from '../../icons/blue_fate.png';
-import pinkFate from '../../icons/pink_fate.png';
 import styled from "styled-components";
-import { BannerCurrency } from "../BannerEnums";
-
-import {
-    selectAcquaintFates,
-    selectIntertwinedFates,
-    setIntertwinedFates,
-    setAcquaintFates,
-} from '../../store/slices/bannerDataSlice';
+import { GameInfo } from "../../GameInfo";
 
 const ColumnFlex = styled.div`
     display: flex;
     flex-direction: column;`
 
-const CurrencyDataInputPanel = () => {
+interface Props {
+    gameInfo: GameInfo;
+}
+
+const CurrencyDataInputPanel = ({ gameInfo }: Props) => {
     return (
         <ColumnFlex>
-            <PrimogemInput></PrimogemInput>
-            <FatesInput icon={blueFate} selector={selectAcquaintFates} setter={setAcquaintFates}></FatesInput>
-            <FatesInput icon={pinkFate} selector={selectIntertwinedFates} setter={setIntertwinedFates}></FatesInput>
+            <PrimogemInput icon={gameInfo.icons.primoIcon} setPrimos={gameInfo.primoSetter} selectPrimos={gameInfo.primoSelector} />
+            <FatesInput icon={gameInfo.icons.fateIcon} selector={gameInfo.fatesSelector} setter={gameInfo.fatesSetter} />
+            <FatesInput icon={gameInfo.icons.pinkFateIcon} selector={gameInfo.pinkFatesSelector} setter={gameInfo.pinkFatesSetter} />
         </ColumnFlex>
     );
 

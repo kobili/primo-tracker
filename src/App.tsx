@@ -1,27 +1,28 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CurrencyDataInputPanel from './components/currencyData';
-import styled from 'styled-components';
-import BannerInfoPanel from './components/bannerInfo';
-import Eulamber from './images/Eulamber.jpeg';
-
-const RowFlex = styled.div`
-  padding: 50px;
-  display: flex;
-  gap: 10%;
-  align-items: flex-start;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-  background-image: url(${Eulamber});
-  background-size: auto 65vh;
-  background-repeat: no-repeat;
-  background-position: bottom right`;
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import './styles/react-tabs.css';
+import { Screen } from './components/screens/hoyoGameScreen';
+import { GENSHIN_GAME_INFO, STAR_RAIL_GAME_INFO } from './GameInfo';
+import { GameTypes } from './enums/Games';
 
 function App() {
   return (
-    <RowFlex>
-      <BannerInfoPanel></BannerInfoPanel>
-      <CurrencyDataInputPanel></CurrencyDataInputPanel>
-    </RowFlex>
+    <>
+      <Tabs>
+        <TabList>
+          <Tab>{GameTypes.GENSHIN}</Tab>
+          <Tab>{GameTypes.HONKAI_STAR_RAIL}</Tab>
+        </TabList>
+
+        <TabPanel>
+          <Screen gameInfo={GENSHIN_GAME_INFO} />
+        </TabPanel>
+        <TabPanel>
+          <Screen gameInfo={STAR_RAIL_GAME_INFO} />
+        </TabPanel>
+      </Tabs>
+
+    </>
   );
 }
 
