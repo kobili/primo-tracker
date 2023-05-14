@@ -1,7 +1,8 @@
 import { PrimogemInput } from "./PrimogemInput";
 import { FatesInput } from "./FatesInput";
-import blueFate from '../../icons/blue_fate.png';
-import pinkFate from '../../icons/pink_fate.png';
+// import blueFate from '../../icons/blue_fate.png';
+import blueFate from '../../../public/blue_fate.png'
+import pinkFate from '../../../public/pink_fate.png'
 import styled from "styled-components";
 import { BannerCurrency } from "../../enums/BannerEnums";
 

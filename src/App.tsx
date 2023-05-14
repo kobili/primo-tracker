@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CurrencyDataInputPanel from './components/currencyData';
 import styled from 'styled-components';
 import BannerInfoPanel from './components/bannerInfo';
-import Eulamber from './images/Eulamber.jpeg';
+import Eulamber from '../public/Eulamber.jpeg';
 
 const RowFlex = styled.div`
   padding: 50px;
