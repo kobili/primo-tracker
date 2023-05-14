@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import {
     selectIntertwinedFates,
     selectAcquaintFates,
-    selectCharacterBannerPity,
-    selectWeaponBannerPity,
-    selectStandardBannerPity,
-    setCharacterBannerPity,
-    setWeaponBannerPity,
-    setStandardBannerPity,
+    selectCharacterBannerPity as selectGenshinCharacterPity,
+    selectWeaponBannerPity as selectGenshinWeaponPity,
+    selectStandardBannerPity as selectGenshinStandardPity,
+    setCharacterBannerPity as setGenshinCharacterPity,
+    setWeaponBannerPity as setGenshinWeaponPity,
+    setStandardBannerPity as setGenshinStandardPity,
 } from '../../store/slices/genshinBannerDataSlice';
 
 import { bannerPull } from '../../store/actions/PullActions';
@@ -29,22 +29,22 @@ const BannerInfoPanel = ({game}: BannerInfoPanelProps) => {
         <FlexColumn>
             <BannerInfo
                 bannerType={BannerType.STANDARD}
-                pitySelector={selectStandardBannerPity}
-                pitySetter={setStandardBannerPity}
+                pitySelector={selectGenshinStandardPity}
+                pitySetter={setGenshinStandardPity}
                 fatesSelector={selectAcquaintFates}
                 bannerPullAction={bannerPull}
             ></BannerInfo>
             <BannerInfo
                 bannerType={BannerType.CHARACTER}
-                pitySelector={selectCharacterBannerPity}
-                pitySetter={setCharacterBannerPity}
+                pitySelector={selectGenshinCharacterPity}
+                pitySetter={setGenshinCharacterPity}
                 fatesSelector={selectIntertwinedFates}
                 bannerPullAction={bannerPull}
             ></BannerInfo>
             <BannerInfo
                 bannerType={BannerType.WEAPON}
-                pitySelector={selectWeaponBannerPity}
-                pitySetter={setWeaponBannerPity}
+                pitySelector={selectGenshinWeaponPity}
+                pitySetter={setGenshinWeaponPity}
                 fatesSelector={selectIntertwinedFates}
                 bannerPullAction={bannerPull}
             ></BannerInfo>
