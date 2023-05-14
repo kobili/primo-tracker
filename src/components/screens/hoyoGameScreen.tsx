@@ -7,21 +7,20 @@ interface ScreenProps {
     gameInfo: GameInfo;
 }
 
-export const Screen = ({ gameInfo }: ScreenProps) => {
-    const RowFlex = styled.div`
+const RowFlex = styled.div`
     padding: 50px;
     display: flex;
     gap: 10%;
     align-items: flex-start;
     margin-bottom: 10px;
     flex-wrap: wrap;
-    background-image: url(${gameInfo.icons.backgroundImage});
     background-size: auto 65vh;
     background-repeat: no-repeat;
     background-position: bottom right`;
 
+export const Screen = ({ gameInfo }: ScreenProps) => {
     return (
-        <RowFlex>
+        <RowFlex style={{backgroundImage: `url(${gameInfo.icons.backgroundImage})`}}>
             <BannerInfoPanel gameInfo={gameInfo}></BannerInfoPanel>
             <CurrencyDataInputPanel gameInfo={gameInfo}></CurrencyDataInputPanel>
         </RowFlex>
