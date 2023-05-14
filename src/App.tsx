@@ -1,15 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import './styles/react-tabs.css';
 import { Screen } from './components/screens/hoyoGameScreen';
 import { GENSHIN_GAME_INFO, STAR_RAIL_GAME_INFO } from './GameInfo';
+import { GameTypes } from './enums/Games';
 
 function App() {
   return (
     <>
       <Tabs>
         <TabList>
-          <Tab>Genshin</Tab>
-          <Tab>Star Rail</Tab>
+          <Tab>{GameTypes.GENSHIN}</Tab>
+          <Tab>{GameTypes.HONKAI_STAR_RAIL}</Tab>
         </TabList>
 
         <TabPanel>
@@ -21,7 +23,6 @@ function App() {
       </Tabs>
 
     </>
-    // <Screen gameInfo={GENSHIN_GAME_INFO} />
   );
 }
 
