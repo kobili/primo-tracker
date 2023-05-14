@@ -31,14 +31,14 @@ import {
     selectWeaponBannerPity as selectStarRailWeaponPity,
 } from './store/slices/starRailBannerDataSlice';
 
-import acquaintFateIcon from './icons/blue_fate.png';
-import intertwinedFateIcon from './icons/pink_fate.png';
-import primogemIcon from './icons/primogem.png';
+import acquaintFateIcon from './images/icons/blue_fate.png';
+import intertwinedFateIcon from './images/icons/pink_fate.png';
+import primogemIcon from './images/icons/primogem.png';
 import eulaAmberImage from './images/Eulamber.jpeg';
 
-import jadeIcon from './icons/stellar_jade.png';
-import railPassIcon from './icons/rail_pass.png';
-import specialRailPassIcon from './icons/special_rail_pass.png';
+import jadeIcon from './images/icons/stellar_jade.png';
+import railPassIcon from './images/icons/rail_pass.png';
+import specialRailPassIcon from './images/icons/special_rail_pass.png';
 
 type ReduxNumberSelector = (state: RootState) => number;
 type ReduxNumberSetter = ActionCreatorWithPayload<number, string>;
