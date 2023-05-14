@@ -3,7 +3,7 @@ import { FatesInput } from "./FatesInput";
 import blueFate from '../../icons/blue_fate.png';
 import pinkFate from '../../icons/pink_fate.png';
 import styled from "styled-components";
-import { BannerCurrency } from "../BannerEnums";
+import { BannerCurrency } from "../../enums/BannerEnums";
 
 import {
     selectAcquaintFates,
