@@ -15,7 +15,7 @@ const initialState = {
 
 
 const bannerSlice = createSlice({
-    name: 'banner',
+    name: 'genshin',
     initialState,
     reducers: {
         setPrimogems: (state, action: PayloadAction<number>) => {

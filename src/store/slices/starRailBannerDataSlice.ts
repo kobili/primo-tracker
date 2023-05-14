@@ -15,7 +15,7 @@ const initialState = {
 
 
 const bannerSlice = createSlice({
-    name: 'banner',
+    name: 'starRail',
     initialState,
     reducers: {
         setJades: (state, action: PayloadAction<number>) => {
