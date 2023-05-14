@@ -39,6 +39,7 @@ import eulaAmberImage from './images/Eulamber.jpeg';
 import jadeIcon from './images/icons/stellar_jade.png';
 import railPassIcon from './images/icons/rail_pass.png';
 import specialRailPassIcon from './images/icons/special_rail_pass.png';
+import starRailBG from './images/star_rail.png';
 
 type ReduxNumberSelector = (state: RootState) => number;
 type ReduxNumberSetter = ActionCreatorWithPayload<number, string>;
@@ -147,6 +148,6 @@ export const STAR_RAIL_GAME_INFO: GameInfo = {
         primoIcon: jadeIcon,
         fateIcon: railPassIcon,
         pinkFateIcon: specialRailPassIcon,
-        backgroundImage: eulaAmberImage,
+        backgroundImage: starRailBG,
     },
 }
