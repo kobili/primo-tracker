@@ -16,7 +16,6 @@ import {
     setAcquaintFates,
     setIntertwinedFates,
 } from './store/slices/genshinBannerDataSlice';
-
 import {
     setJades,
     selectJades,
@@ -32,6 +31,11 @@ import {
     selectWeaponBannerPity as selectStarRailWeaponPity,
 } from './store/slices/starRailBannerDataSlice';
 
+import acquaintFateIcon from './icons/blue_fate.png';
+import intertwinedFateIcon from './icons/pink_fate.png';
+import primogemIcon from './icons/primogem.png';
+import eulaAmberImage from './images/Eulamber.jpeg';
+
 type ReduxNumberSelector = (state: RootState) => number;
 type ReduxNumberSetter = ActionCreatorWithPayload<number, string>;
 
@@ -39,6 +43,13 @@ export interface GameInfo {
     banners: Banner[];
     gameType: GameTypes;
     primosPerPull: number;
+
+    icons: {
+        primoIcon: string;
+        fateIcon: string;
+        pinkFateIcon: string;
+        backgroundImage: string;
+    };
 
     primoSelector: ReduxNumberSelector;
     primoSetter: ReduxNumberSetter;
@@ -88,6 +99,12 @@ export const GENSHIN_GAME_INFO: GameInfo = {
     fatesSetter: setAcquaintFates,
     pinkFatesSelector: selectIntertwinedFates,
     pinkFatesSetter: setIntertwinedFates,
+    icons: {
+        primoIcon: primogemIcon,
+        fateIcon: acquaintFateIcon,
+        pinkFateIcon: intertwinedFateIcon,
+        backgroundImage: eulaAmberImage,
+    },
 }
 
 export const STAR_RAIL_GAME_INFO: GameInfo = {
@@ -122,4 +139,10 @@ export const STAR_RAIL_GAME_INFO: GameInfo = {
     fatesSetter: setRailPasses,
     pinkFatesSelector: selectSpecialRailPasses,
     pinkFatesSetter: setSpecialRailPasses,
+    icons: {
+        primoIcon: primogemIcon,
+        fateIcon: acquaintFateIcon,
+        pinkFateIcon: intertwinedFateIcon,
+        backgroundImage: eulaAmberImage,
+    },
 }
