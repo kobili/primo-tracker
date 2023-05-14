@@ -4,7 +4,6 @@ import { Button } from '../SharedComponents';
 import type { RootState } from '../../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import type { ActionCreatorWithPayload } from '@reduxjs/toolkit';
-import { selectPrimogems } from '../../store/slices/genshinBannerDataSlice';
 import { useEffect, useState } from 'react';
 
 const ColumnFlex = styled.div`
@@ -45,6 +44,7 @@ const Input = styled.input`
 
 export interface BannerInfoProps {
   bannerType: BannerType;
+  primoSelector: (state: RootState) => number;
   pitySelector: (state: RootState) => number;
   pitySetter: ActionCreatorWithPayload<number, string>;
   fatesSelector: (state: RootState) => number;
@@ -62,6 +62,7 @@ export interface BannerInfoProps {
 export const BannerInfo = (props: BannerInfoProps) => {
   const {
     bannerType,
+    primoSelector,
     pitySelector,
     pitySetter,
     fatesSelector,
@@ -73,7 +74,7 @@ export const BannerInfo = (props: BannerInfoProps) => {
   const dispatch = useDispatch();
   const pity = useSelector(pitySelector);
   const fates = useSelector(fatesSelector);
-  const primos = useSelector(selectPrimogems);
+  const primos = useSelector(primoSelector);
 
   const [totalPulls, setTotalPulls] = useState(0);
   const [numberOfHardPities, setNumberOfHardPities] = useState(0);

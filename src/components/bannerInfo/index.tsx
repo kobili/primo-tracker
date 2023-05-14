@@ -20,6 +20,7 @@ const BannerInfoPanel = ({ gameInfo }: BannerInfoPanelProps) => {
                     <BannerInfo
                         key={`${gameInfo.gameType}__${banner.bannerType}`}
                         bannerType={banner.bannerType}
+                        primoSelector={gameInfo.primoSelector}
                         pitySelector={banner.pitySelector}
                         pitySetter={banner.pitySetter}
                         fatesSelector={banner.fatesSelector}
