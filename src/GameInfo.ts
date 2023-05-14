@@ -38,6 +38,7 @@ type ReduxNumberSetter = ActionCreatorWithPayload<number, string>;
 export interface GameInfo {
     banners: Banner[];
     gameType: GameTypes;
+    primosPerPull: number;
 
     primoSelector: ReduxNumberSelector;
     primoSetter: ReduxNumberSetter;
@@ -57,6 +58,7 @@ interface Banner {
 
 export const GENSHIN_GAME_INFO: GameInfo = {
     gameType: GameTypes.GENSHIN,
+    primosPerPull: 160,
     banners: [
         {
             bannerType: BannerType.STANDARD,
@@ -90,6 +92,7 @@ export const GENSHIN_GAME_INFO: GameInfo = {
 
 export const STAR_RAIL_GAME_INFO: GameInfo = {
     gameType: GameTypes.HONKAI_STAR_RAIL,
+    primosPerPull: 160,
     banners: [
         {
             bannerType: BannerType.STANDARD,

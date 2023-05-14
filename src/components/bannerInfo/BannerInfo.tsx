@@ -55,6 +55,8 @@ export interface BannerInfoProps {
     fates: number,
     primos: number
   }>;
+  hardPity: number;
+  primosPerPull: number;
 }
 
 export const BannerInfo = (props: BannerInfoProps) => {
@@ -64,6 +66,8 @@ export const BannerInfo = (props: BannerInfoProps) => {
     pitySetter,
     fatesSelector,
     bannerPullAction,
+    hardPity,
+    primosPerPull,
   } = props;
 
   const dispatch = useDispatch();
@@ -84,15 +88,14 @@ export const BannerInfo = (props: BannerInfoProps) => {
   });
 
   const updateTotalPulls = (primos: number, fates: number, pity: number) => {
-    let pullsFromPrimos = primos / 160;
+    let pullsFromPrimos = primos / primosPerPull;
     let updatedTotalPulls = Math.floor(pullsFromPrimos + fates + pity);
     setTotalPulls(updatedTotalPulls);
 
-    let pullsRequiredForHardPity = bannerType === BannerType.WEAPON ? 80 : 90;
-    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / pullsRequiredForHardPity);
+    let updatedNumberOfHardPities = Math.floor(updatedTotalPulls / hardPity);
     setNumberOfHardPities(updatedNumberOfHardPities);
 
-    let primosToNextPity = Math.ceil((pullsRequiredForHardPity - (updatedTotalPulls % pullsRequiredForHardPity)) * 160);
+    let primosToNextPity = Math.ceil((hardPity - (updatedTotalPulls % hardPity)) * 160);
     setPrimosToNextHardPity(primosToNextPity);
 
     // update whether or not single or ten pulls are possible
