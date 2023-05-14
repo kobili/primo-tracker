@@ -14,7 +14,7 @@ interface Props {
 const CurrencyDataInputPanel = ({ gameInfo }: Props) => {
     return (
         <ColumnFlex>
-            <PrimogemInput setPrimos={gameInfo.primoSetter} selectPrimos={gameInfo.primoSelector} />
+            <PrimogemInput icon={gameInfo.icons.primoIcon} setPrimos={gameInfo.primoSetter} selectPrimos={gameInfo.primoSelector} />
             <FatesInput icon={gameInfo.icons.fateIcon} selector={gameInfo.fatesSelector} setter={gameInfo.fatesSetter} />
             <FatesInput icon={gameInfo.icons.pinkFateIcon} selector={gameInfo.pinkFatesSelector} setter={gameInfo.pinkFatesSetter} />
         </ColumnFlex>

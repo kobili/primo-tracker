@@ -15,10 +15,10 @@ const ButtonGroup = styled.div`
 interface Props {
     setPrimos: ActionCreatorWithPayload<number, string>;
     selectPrimos: (state: RootState) => number;
-    // TODO: Move primogem icon to a prop
+    icon: string;
 }
 
-export const PrimogemInput = ({ setPrimos, selectPrimos }: Props) => {
+export const PrimogemInput = ({ setPrimos, selectPrimos, icon }: Props) => {
 
     const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export const PrimogemInput = ({ setPrimos, selectPrimos }: Props) => {
     return (
         <InputContainer>
             <InputField>
-                <Image src={primogemIcon} />
+                <Image src={icon} />
                 <Input type="number" min={0} onChange={(e) => dispatch(setPrimos(parseInt(e.target.value)))} value={primos !== 0 ? primos : ""} />
             </InputField>
             <ButtonGroup>
