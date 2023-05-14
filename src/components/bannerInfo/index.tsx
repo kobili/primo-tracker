@@ -13,7 +13,7 @@ import {
 } from '../../store/slices/genshinBannerDataSlice';
 
 import { bannerPull } from '../../store/actions/PullActions';
-import { Games } from '../../enums/Games';
+import { GameTypes } from '../../enums/Games';
 
 const FlexColumn = styled.div`
     display: flex;
@@ -21,7 +21,7 @@ const FlexColumn = styled.div`
     gap: 50px;`
 
 interface BannerInfoPanelProps {
-    game: Games;
+    game: GameTypes;
 }
 
 const BannerInfoPanel = ({game}: BannerInfoPanelProps) => {

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CurrencyDataInputPanel from '../currencyData';
 import BannerInfoPanel from '../bannerInfo';
 import Eulamber from '../../images/Eulamber.jpeg';
-import { Games } from '../../enums/Games';
+import { GameTypes } from '../../enums/Games';
 
 const RowFlex = styled.div`
     padding: 50px;
@@ -17,7 +17,7 @@ const RowFlex = styled.div`
     background-position: bottom right`;
 
 interface ScreenProps {
-    game: Games;
+    game: GameTypes;
 }
 
 export const Screen = ({ game }: ScreenProps) => {
